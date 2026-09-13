@@ -424,25 +424,126 @@ En esta sección se presenta el Product Backlog de SmartGas, organizado según e
 | 31 | TS04 | API de alertas | 5 | Sprint 2 |
 | 32 | TS05 | Integración con servicio externo | 5 | Sprint 2 |
 | 33 | SP01 | Investigar tecnología móvil nueva | 3 | Sprint 1 |
+
+
 ## 2.5. Strategic-Level Domain-Driven Design
+
+Esta sección describe cómo se aplicó Domain-Driven Design a nivel estratégico para organizar SmartGas como una solución móvil orientada al monitoreo preventivo de riesgos por gas y temperatura. A partir de los hallazgos de las entrevistas, las user stories y el product backlog, se identificaron los procesos principales del dominio: registro de usuarios, gestión de sensores, monitoreo de lecturas, detección de incidentes, envío de alertas, consulta de historial y generación de reportes.
+
+El objetivo de este análisis es separar las responsabilidades del sistema en bounded contexts claros, reduciendo el acoplamiento entre módulos y permitiendo que la aplicación móvil evolucione de forma ordenada. Para ello, se utilizaron técnicas como EventStorming, Candidate Context Discovery, Domain Message Flows Modeling, Bounded Context Canvases y Context Mapping.
 
 ### 2.5.1. EventStorming
 
+El EventStorming permitió representar los eventos más importantes que ocurren dentro del sistema SmartGas. Esta dinámica ayudó a identificar qué hechos cambian el estado del negocio y cómo se relacionan con las necesidades de los usuarios entrevistados.
+
+En el caso de SmartGas, los eventos principales se relacionan con el registro del usuario, la vinculación de sensores, la recepción de lecturas de gas y temperatura, la detección de anomalías, la generación de alertas y la consulta de información histórica desde la aplicación móvil.
+
 #### 2.5.1.1. Candidate Context Discovery
+
+En esta etapa se agruparon los eventos del dominio según su afinidad funcional. Esto permitió detectar los posibles bounded contexts del sistema y separar las responsabilidades de acuerdo con el valor que entregan al usuario.
+
+<div align="center">
+  <img alt="Candidate Context Discovery" src="assets/15-Candidate_Context_Discovery.png" />
+</div>
+
+Los candidate contexts identificados para SmartGas son los siguientes:
+
+| Candidate Context | Responsabilidad principal | Valor para el usuario |
+|---|---|---|
+| Identity & Access Management | Gestionar registro, inicio de sesión, cierre de sesión y perfil del usuario. | Permite acceder de forma segura a la aplicación móvil. |
+| Kitchen Monitoring | Registrar sensores y recibir lecturas de gas, temperatura y estado del ambiente. | Permite visualizar la seguridad del hogar o negocio en tiempo real. |
+| Incident Detection | Analizar lecturas y reconocer fugas, temperaturas anómalas o cambios peligrosos. | Reduce el tiempo de reacción ante situaciones de riesgo. |
+| Incident Prevention & Notification | Generar alertas, notificaciones push y recomendaciones preventivas. | Informa al usuario inmediatamente desde su celular. |
+| Reports & History | Almacenar eventos, historial de lecturas y reportes de seguridad. | Facilita revisar incidentes pasados y tomar mejores decisiones. |
+| Configuration & Mobile Capabilities | Gestionar preferencias, umbrales, almacenamiento local y recursos del dispositivo. | Adapta la experiencia móvil a las necesidades del usuario. |
+| External Integrations | Conectar el sistema con servicios externos necesarios para alertas o recomendaciones. | Enriquece la información entregada por la app. |
 
 #### 2.5.1.2. Domain Message Flows Modeling
 
+El modelado de flujos de mensajes permite representar cómo se comunican los contextos delimitados mediante eventos, comandos o consultas. En SmartGas, el flujo principal inicia cuando el usuario registra o configura un sensor desde la aplicación móvil. Luego, el sistema recibe lecturas de gas y temperatura, las analiza y, si detecta una anomalía, genera una alerta que se envía al usuario mediante una notificación push.
+
+<div align="center">
+  <img alt="Domain Message Flows Modeling" src="assets/16-Domain_Message_Flows_Modeling.png" />
+</div>
+
+Flujo principal identificado:
+
+| Paso | Origen | Mensaje o evento | Destino | Resultado |
+|---|---|---|---|---|
+| 1 | Usuario | Sensor registrado | Kitchen Monitoring | El sistema asocia el sensor al usuario. |
+| 2 | Sensor | Lectura recibida | Kitchen Monitoring | Se almacena la lectura de gas y temperatura. |
+| 3 | Kitchen Monitoring | Lectura actualizada | Incident Detection | Se evalúan umbrales y patrones de riesgo. |
+| 4 | Incident Detection | Incidente detectado | Incident Prevention & Notification | Se crea una alerta con nivel de severidad. |
+| 5 | Incident Prevention & Notification | Notificación enviada | Mobile App | El usuario recibe una alerta inmediata. |
+| 6 | Usuario | Alerta atendida | Reports & History | Se registra la acción tomada por el usuario. |
+
 #### 2.5.1.3. Bounded Context Canvases
+
+Los Bounded Context Canvases permiten describir con mayor claridad el propósito, límites, lenguaje y responsabilidades de cada contexto. En SmartGas, estos contextos se organizaron tomando como base las necesidades principales detectadas en las entrevistas: monitorear riesgos, recibir alertas rápidas y revisar información histórica.
+
+<div align="center">
+  <img alt="Bounded Context Canvases" src="assets/17-Bounded_Context_Canvases.png" />
+</div>
+
+| Bounded Context | Descripción | Conceptos principales |
+|---|---|---|
+| Identity & Access Management | Controla la identidad del usuario y el acceso a la aplicación. | Usuario, credenciales, perfil, sesión. |
+| Kitchen Monitoring | Administra sensores, ubicaciones y lecturas en tiempo real. | Sensor, lectura, gas, temperatura, ubicación. |
+| Incident Detection | Evalúa datos recibidos para detectar riesgos. | Umbral, fuga, anomalía, severidad, incidente. |
+| Incident Prevention & Notification | Gestiona alertas y comunicación preventiva. | Alerta, notificación push, recomendación, estado de atención. |
+| Reports & History | Organiza información histórica para consulta y análisis. | Evento, historial, reporte, gráfico, tendencia. |
+| Configuration & Mobile Capabilities | Gestiona preferencias y recursos propios del dispositivo móvil. | Preferencia, almacenamiento local, cámara, permiso, configuración. |
+| External Integrations | Permite consumir servicios externos necesarios para complementar la solución. | API externa, servicio de notificaciones, integración. |
 
 ### 2.5.2. Context Mapping
 
+El Context Mapping muestra cómo se relacionan los bounded contexts identificados. En SmartGas, los contextos no trabajan de forma aislada, ya que el monitoreo, la detección de incidentes y las alertas dependen del intercambio de información entre módulos.
+
+<div align="center">
+  <img alt="Context Mapping" src="assets/18-Context_Mapping.png" />
+</div>
+
+| Origen | Destino | Tipo de relación | Comentario |
+|---|---|---|---|
+| Identity & Access Management | Kitchen Monitoring | Customer/Supplier | El monitoreo requiere usuarios autenticados para asociar sensores y ubicaciones. |
+| Kitchen Monitoring | Incident Detection | Customer/Supplier | La detección de incidentes consume lecturas generadas por los sensores registrados. |
+| Incident Detection | Incident Prevention & Notification | Customer/Supplier | Las alertas se generan a partir de fugas, temperaturas anómalas o estados peligrosos. |
+| Incident Prevention & Notification | Mobile App | Open Host Service | El contexto expone alertas y estados para que la aplicación móvil los muestre al usuario. |
+| Kitchen Monitoring | Reports & History | Conformist | Los reportes consumen lecturas históricas sin modificar el modelo del monitoreo. |
+| Incident Prevention & Notification | Reports & History | Conformist | El historial registra alertas emitidas y acciones realizadas por el usuario. |
+| Configuration & Mobile Capabilities | Kitchen Monitoring | Shared Kernel | Las preferencias de umbrales y recursos móviles afectan la forma de registrar o visualizar sensores. |
+| External Integrations | Incident Prevention & Notification | Anticorruption Layer | Las integraciones externas se aíslan para no contaminar el modelo principal del dominio. |
+
 ### 2.5.3. Software Architecture
+
+La arquitectura de software de SmartGas está diseñada para soportar una aplicación móvil conectada a sensores inteligentes y servicios backend. La app permite a los usuarios monitorear lecturas en tiempo real, recibir alertas inmediatas, configurar sensores, revisar reportes y consultar el historial de incidentes.
+
+La solución se apoya en una API REST que concentra la lógica principal del sistema, una base de datos para persistir usuarios, sensores y eventos, servicios de dominio para detección de incidentes y servicios externos para notificaciones o información complementaria. Esta separación permite mantener una arquitectura clara, escalable y alineada con los bounded contexts definidos.
 
 #### 2.5.3.1. Software Architecture Context Level Diagrams
 
+El diagrama de contexto muestra a SmartGas como un sistema central utilizado por propietarios de vivienda y responsables de negocios que necesitan monitorear ambientes con riesgo de fuga de gas. El sistema se comunica con sensores IoT, servicios de notificación y servicios externos que complementan el funcionamiento de la solución.
+
+<div align="center">
+  <img alt="Software Architecture Context Level" src="assets/19-Software_Architecture_Context_Level.png" />
+</div>
+
 #### 2.5.3.2. Software Architecture Container Level Diagrams
 
+En el nivel de contenedores se observa la organización tecnológica de SmartGas. La aplicación móvil se comunica con una REST API, la cual coordina los servicios de dominio, la base de datos, el gateway de sensores, el proveedor de notificaciones push y las APIs externas. Además, se considera almacenamiento local en el dispositivo móvil para mantener preferencias y últimas lecturas relevantes.
+
+<div align="center">
+  <img alt="Software Architecture Container Level" src="assets/20-Software_Architecture_Container_Level.png" />
+</div>
+
 #### 2.5.3.3. Software Architecture Deployment Diagrams
+
+El diagrama de despliegue representa la distribución física de SmartGas. La aplicación móvil se ejecuta en el dispositivo del usuario, los sensores se instalan en la cocina o zona de riesgo, el backend se despliega en la nube y la base de datos almacena la información persistente. También se incluyen servicios externos para notificaciones push y APIs complementarias.
+
+<div align="center">
+  <img alt="Software Architecture Deployment" src="assets/21-Software_Architecture_Deployment.png" />
+</div>
+
 
 ## 2.6. Tactical-Level Domain-Driven Design
 
