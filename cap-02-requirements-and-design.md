@@ -373,7 +373,16 @@ En esta sección se presentan las épicas y user stories identificadas para Smar
 | TS05 | Developer | Media | EP09 | Integración con servicio externo | Como developer, quiero integrar un servicio externo para complementar la información de seguridad o notificación. | Given que la app solicita información externa, When el servicio responde correctamente, Then el sistema muestra o usa los datos recibidos. |
 | SP01 | Equipo | Alta | EP09 | Investigar tecnología móvil nueva | Como equipo, queremos investigar una tecnología, SDK o librería móvil no vista en clase para justificar su integración en SmartGas. | Given que se evalúan alternativas, When se selecciona una tecnología, Then se documenta su propósito, prueba de viabilidad y conclusión técnica. |
 
+
 ### 2.4.2. Impact Mapping
+
+**Segmento Objetivo 1: Familias y Propietarios de Viviendas**
+
+![ImpactMap_1.png](assets/ImpactMap_1.png)
+
+**Segmento Objetivo 2: Administradores y Chefs de Restaurantes**
+
+![ImpactMap_2.png](assets/ImpactMap_2.png)
 
 ### 2.4.3. Product Backlog
 
