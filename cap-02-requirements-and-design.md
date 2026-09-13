@@ -210,15 +210,113 @@ Mantener una ventaja competitiva a través de la innovación ágil en el softwar
 
 ### 2.3.1. User Personas
 
+En esta sección se presentan los User Personas que representan a los principales segmentos objetivo del proyecto. Estos perfiles han sido construidos a partir de las características, necesidades y comportamientos identificados durante el análisis previo.
+
+Cada persona refleja un tipo de usuario real, permitiendo comprender mejor sus objetivos, motivaciones y dificultades en relación con la seguridad en entornos donde se utiliza gas
+
+**Segmento Objetivo 1: Familias y Propietarios de Viviendas**
+
+*Figura 2 (User Persona 1)*
+![UserPersona_1.png](./assets/08-UserPersona_1.png)
+
+**Segmento Objetivo 2: Administradores y Chefs de Restaurantes**
+
+*Figura 3 (User Persona 2)*
+![UserPersona_2.png](./assets/09-UserPersona_2.png)
+
 ### 2.3.2. User Task Matrix
+
+En esta sección se identifican las principales actividades que realizan los usuarios en su día a día para mantener la seguridad en sus entornos, tanto en el hogar como en espacios de trabajo.
+
+Estas tareas reflejan cómo gestionan actualmente los riesgos asociados al uso de gas, sin el apoyo de una solución digital como SmartGas.
+
+
+| Tareas / User Persona                                | Helí Rodríguez (Frec.) | Helí Rodríguez (Imp.) | María López (Frec.) | María López (Imp.) |
+| ---------------------------------------------------- | ---------------------- | --------------------- | ------------------- | ------------------ |
+| Supervisar equipos de cocina                         | Alta                   | Alta                  | Media               | Alta               |
+| Revisar instalaciones de gas                         | Media                  | Alta                  | Baja                | Alta               |
+| Detectar olores o señales de fuga                    | Media                  | Alta                  | Baja                | Alta               |
+| Verificar que todo esté apagado                      | Alta                   | Alta                  | Alta                | Alta               |
+| Actuar ante emergencias                              | Baja                   | Alta                  | Baja                | Alta               |
+| Realizar mantenimiento preventivo                    | Media                  | Alta                  | Baja                | Media              |
+| Depender de revisiones manuales                      | Alta                   | Alta                  | Alta                | Alta               |
+| Usar el celular para comunicarse                     | Alta                   | Media                 | Alta                | Media              |
+| Preocuparse por la seguridad cuando no está presente | Alta                   | Alta                  | Alta                | Alta               |
+
+Se observa que ambos usuarios dependen en gran medida de revisiones manuales para garantizar la seguridad, lo que puede generar descuidos o respuestas tardías ante un problema.
+
+Helí tiene una carga operativa más alta y necesita control constante en un entorno exigente, mientras que María busca principalmente tranquilidad y prevención en su hogar.
+
+Esto refuerza la necesidad de una solución que permita monitoreo remoto y alertas oportunas, adaptándose tanto a un uso profesional como doméstico.
+
 
 ### 2.3.3. User Journey Mapping
 
+En esta sección se describe el recorrido que siguen los usuarios en su interacción con una posible solución al problema identificado. A través de distintas etapas, se analiza cómo evolucionan sus objetivos, acciones, percepciones y dificultades desde el momento en que toman conciencia del riesgo hasta que adoptan una herramienta que les permita gestionarlo.
+
+El User Journey permite identificar puntos críticos y oportunidades de mejora, facilitando el diseño de una experiencia que responda de manera efectiva a las necesidades de cada segmento.
+
+**Segmento Objetivo 1: Familias y Propietarios de Viviendas**
+
+*Figura 4 (User Journey Mapping 1)*
+![UserJourneyMapping_1.png](./assets/10-UserJourneyMapping_1.png)
+
+**Segmento Objetivo 2: Administradores y Chefs de Restaurantes**
+
+*Figura 5 (User Journey Mapping 2)*
+![UserJourneyMapping_2.png](./assets/11-UserJourneyMapping_2.png)
+
 ### 2.3.4. Empathy Mapping
+
+En esta sección se analizan los pensamientos, emociones, acciones y percepciones de los usuarios con el objetivo de comprender mejor su comportamiento frente al problema planteado.
+
+El Empathy Map permite profundizar en las necesidades reales de cada segmento, identificando sus preocupaciones, motivaciones y frustraciones. Esto contribuye a diseñar una solución más alineada con el usuario, asegurando que la propuesta de valor sea clara, útil y relevante en su contexto.
+
+**Segmento Objetivo 1: Familias y Propietarios de Viviendas**
+
+*Figura 6 (Empathy Map 1)*
+![EmpathyMap_1.png](./assets/12-EmpathyMap_1.png)
+
+**Segmento Objetivo 2: Administradores y Chefs de Restaurantes**
+
+*Figura 7 (Empathy Map 2)*
+![EmpathyMap_2.png](./assets/13-EmpathyMap_2.png)
 
 ### 2.3.5. Big Picture EventStorming
 
+*Figura 8 (BigPicture Event Storming)*
+<div align="center">
+  <img alt="BigPicture" src="assets/14-BigPicture_EventStorming.jpg" />
+</div>
+
 ### 2.3.6. Ubiquitous Language
+
+En este apartado se definen los términos clave que se utilizarán a lo largo del desarrollo del sistema SmartGas. Este conjunto de conceptos permite que tanto el equipo técnico como los usuarios tengan una misma interpretación de los elementos y procesos del sistema.
+
+El uso de este lenguaje común facilita la comprensión del funcionamiento de la plataforma, reduce confusiones y asegura coherencia en el diseño e implementación de la solución.
+
+A continuación, se presentan los principales términos definidos:
+
+* Telemetría de sensores en tiempo real: Datos continuos enviados por sensores de gas y temperatura hacia el sistema para su monitoreo.
+
+* Sensor IoT: Dispositivo físico instalado en cocinas o ambientes que mide niveles de gas y temperatura.
+
+* Anomalía de gas o temperatura: Valor detectado fuera de los rangos seguros establecidos que puede representar un riesgo.
+
+* Detección de fuga de gas: Identificación automática de niveles peligrosos de gas en el ambiente.
+
+* Alerta de seguridad: Notificación generada por el sistema cuando se detecta una anomalía.
+
+* Notificación en tiempo real: Mensaje enviado al usuario a través de la web o servicios externos de forma inmediata.
+
+* Dashboard de monitoreo: Interfaz web donde el usuario visualiza el estado de sus sensores y niveles de seguridad.
+
+* Historial de incidencias: Registro almacenado de eventos relacionados con anomalías o alertas detectadas.
+
+* Monitoreo remoto: Capacidad de supervisar el estado del entorno desde cualquier dispositivo con acceso a internet.
+
+* Gestión de dispositivos: Proceso de registrar, configurar y asociar sensores a usuarios o ubicaciones.
+
 
 ## 2.4. Requirements specification
 
