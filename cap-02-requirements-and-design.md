@@ -42,9 +42,169 @@ Mantener una ventaja competitiva a través de la innovación ágil en el softwar
 
 ### 2.2.1. Diseño de entrevistas
 
+**Segmento Objetivo 1: Familias y Propietarios de Viviendas**
+
+1. ¿Cuál es su nombre, edad y a qué se dedica actualmente?
+2. ¿En qué distrito vive y con cuántas personas comparte su hogar?
+3. ¿Qué tipo de dispositivos utiliza con mayor frecuencia (celular, laptop, tablet)?
+4. ¿Qué aplicaciones o páginas web usa en su día a día?
+5. ¿Qué tan familiarizado está con el uso de aplicaciones web o dispositivos inteligentes en el hogar?
+6. En su vivienda, ¿qué tipo de cocina utiliza (gas, eléctrica, mixta)?
+7. ¿Ha tenido alguna experiencia o conoce casos cercanos de fugas de gas o incendios domésticos?
+8. ¿Qué medidas de seguridad tiene actualmente en su hogar para prevenir estos riesgos?
+9. ¿Con qué frecuencia revisa el estado de su cocina o instalaciones de gas?
+10. ¿Qué tan seguro se siente respecto a posibles fugas de gas cuando no está en casa?
+11. Si ocurriera una fuga de gas mientras usted no está presente, ¿cómo se enteraría?
+12. ¿Qué dificultades encuentra al depender solo de revisiones manuales o alarmas tradicionales?
+13. ¿Le gustaría poder monitorear el estado de su hogar en tiempo real desde su celular o navegador?
+14. ¿Qué funcionalidades le parecerían más útiles en una plataforma web de seguridad doméstica (alertas, historial, visualización en tiempo real, etc.)?
+15. ¿Estaría dispuesto a usar una aplicación como SmartGas que le envíe alertas automáticas ante riesgos? ¿Por qué?
+
+**Segmento Objetivo 2: Administradores y Chefs de Restaurantes**
+
+1. ¿Cuál es su nombre, edad y cuál es su rol dentro del restaurante o negocio?
+2. ¿En qué distrito se encuentra su local y cuánto tiempo lleva operando?
+3. ¿Qué dispositivos utiliza para gestionar su negocio (PC, laptop, celular, tablet)?
+4. ¿Qué sistemas o herramientas digitales utiliza actualmente en la gestión del restaurante?
+5. ¿Qué tan importante considera la tecnología en la seguridad y operación de su negocio?
+6. ¿Qué tipo de equipos de cocina utilizan y qué tan dependientes son del gas?
+7. ¿Ha experimentado o conoce incidentes relacionados con fugas de gas o incendios en restaurantes?
+8. ¿Qué protocolos de seguridad tiene implementados actualmente en su cocina?
+9. ¿Cómo supervisa el estado de las instalaciones de gas y temperatura en su local?
+10. ¿Qué dificultades enfrenta al monitorear la seguridad en tiempo real, especialmente en horas de alta demanda?
+11. ¿Qué consecuencias tendría para su negocio una fuga de gas o un incendio?
+12. ¿Qué tan complicado es llevar un registro o historial de incidentes de seguridad actualmente?
+13. ¿Le resultaría útil contar con un sistema centralizado que monitoree múltiples áreas o locales en tiempo real?
+14. ¿Qué funciones considera indispensables en una plataforma web de monitoreo (alertas automáticas, reportes, control por zonas, etc.)?
+15. ¿Estaría dispuesto a implementar una solución como SmartGas para mejorar la seguridad de su negocio? ¿Por qué?
+
+
 ### 2.2.2. Registro de entrevistas
 
+##### Segmento objetivo #1 Familias y Propietarios de Viviendas
+
+#### Entrevista 1:
+
+![Entrevista1.png](./assets/02-entrevista1A.png)
+
+- **Nombres y apellidos:** Saúl Romani
+- **Edad:** 48
+- **Distrito:** Jesús María
+- **Inicio:** 0:18
+- **Duración:** 7:05
+- **URL:**  [entrevista](https://youtu.be/n1bmq2q0aiQ)
+- **Resumen:** Saúl, de 48 años, es ingeniero de sistemas de la información y reside en un departamento con servicio de seguridad en el distrito de Jesús María. A pesar de contar con medidas de protección en su vivienda, menciona que uno de sus mayores gastos está relacionado con el mantenimiento, especialmente en aspectos vinculados a la seguridad y el buen funcionamiento del hogar. Sin embargo, señala que aún no confía completamente en los sistemas tradicionales, ya que considera que no siempre previenen incidentes de manera oportuna. Frente a ello, indica que sí usaría una aplicación como Smart Guard, porque le brindaría mayor tranquilidad y control. Para él, las funcionalidades más útiles serían el monitoreo de los niveles de gas mediante sensores y la detección de movimiento, ya que estas permitirían identificar riesgos a tiempo y actuar rápidamente ante posibles emergencias en la cocina.
+
+#### Entrevista 2:
+
+![entrevista2A.png](./assets/03-entrevista2A.png)
+
+- **Nombres y apellidos:** Sheila Rosales
+- **Edad:** 42
+- **Distrito:** Trujillo
+- **Inicio:** 0:00
+- **Duración:** 7:11
+- **URL:**  [entrevista](https://youtu.be/VHuMHrjeVto)
+- **Resumen:** Sheila, de 42 años, se dedica al hogar y reside en el distrito de Trujillo junto a su familia en una vivienda de tres personas. Aunque utiliza dispositivos tecnológicos como celular y laptop diariamente, no cuenta con sistemas inteligentes en casa, aunque reconoce su utilidad para prevenir accidentes. Utiliza una cocina a gas y, aunque no ha sufrido incidentes personales, manifiesta una gran preocupación por la posibilidad de fugas o incendios cuando no se encuentra presente, dependiendo actualmente solo de la vigilancia visual de los vecinos para enterarse de una emergencia. <br> Menciona que su única medida de seguridad actual es la revisión manual, pero admite que no realiza mantenimientos frecuentes. Frente a esta situación, Sheila muestra un alto interés en utilizar SmartGas, destacando que le brindaría la tranquilidad de monitorear su hogar en tiempo real. Para ella, las funcionalidades más valiosas serían las alertas automáticas y la visualización en tiempo real, ya que le permitirían actuar con rapidez o enviar ayuda antes de que ocurra un accidente grave, transformando su actual incertidumbre en un control preventivo directo desde su celular.
+
+#### Entrevista 3:
+
+![entrevista3A.png](./assets/04-entrevista3A.png)
+
+- **Nombres y apellidos:** Sonia Rojas
+- **Edad:** 57
+- **Distrito:** Cercado de Lima
+- **Inicio:** 0:00
+- **Duración:** 5:41
+- **URL:**  [entrevista](https://upcedupe-my.sharepoint.com/:v:/g/personal/u20241d995_upc_edu_pe/IQBheKhR4PPTRKlTRUd6PQNKAdXT_fgaZvI961KIImPMP3w?e=k0RXJx&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D)
+- **Resumen:** Sonia, de 57 años, es una ama de casa del distrito de Cercado de Lima la cual vive en su hogar junto con sus 2 hijos. Si bien ella utiliza dispositivos electronicos tales como su celular, ella no está acostumbrada a usar equipos de escritorio como laptops o computadoras, así como tampoco está familiarizada con el uso de sistemas inteligente en su hogar, pese a ello reconoce que estos sistemas pueden ser de gran utilidad para la detección de incidente en el hogar. Utiliza una cocina a gas, no he sufrido ningun accidente relaciona con gas o fuego sin embargo conocidos suyos si han sufrido de está clase de incidentes. Ella muestra preocupación por el bienestar de su familia en caso uno de estos incidente se pueda sucitar. Sonia muestra interes en la aplicación de SmartGuard, resalta que la funcionalidad de las notificaciones y alertas automáticas le parecen las más importantes pues le permitirian saber cuando es que su familia sufre de algún riesgo.
+
+##### Segmento objetivo #2 Administradores y Chefs de Restaurantes
+
+#### Entrevista 1:
+
+![Entrevista1.png](./assets/05-entrevista1.png)
+
+- **Nombres y apellidos:** Raí Beizaga
+- **Edad:** 20
+- **Distrito:** Jesús María
+- **Inicio:** 0:00
+- **Duración:** 4:46
+- **URL:**  [entrevista](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202310436_upc_edu_pe/IQCEZTjEZ0mgTrHjCdh71j0DAS2Z7AX7h5JkZvyN8dp-oaI?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=C5xNxe)
+- **Resumen:** Raí, de 20 años, se desempeña como ayudante de cocina el restaurante Terminal Pesquero ubicado en Jesús María, el cual lleva trabajando desde hace 5 meses. Debido a la naturaleza de su trabajo, opera constantemente equipos de alto riesgo como freidoras, hornos y cocinas industriales que dependen totalmente del suministro de gas. Actualmente, la seguridad del local se gestiona de forma manual, realizando inspecciones visuales de válvulas y conexiones antes de iniciar la jornada, lo que resulta insuficiente durante las horas de alta demanda donde el control se pierde. Fabrizio señala que una fuga de gas o un incendio no solo representaría una pérdida económica devastadora, sino un daño irreparable a la reputación del negocio. Como trabajador joven, manifiesta una mayor confianza en la precisión de los sensores tecnológicos que en el olfato humano para detectar peligros. Ante este contexto, considera que SmartGas sería una solución indispensable, destacando funciones como las alertas inmediatas al celular, gráficos de temperatura para evitar sobrecalentamientos y un botón de corte de emergencia para aviso rápido a mantenimiento o bomberos
+
+#### Entrevista 2:
+
+![Entrevista2.png](./assets/06-entrevista2.png)
+
+- **Nombres y apellidos:** Kevin Arnold Izquiero Pardave
+- **Edad:** 31
+- **Distrito:** Jesús María
+- **Inicio:** 0:00
+- **Duración:** 4:17
+- **URL:**  [entrevista](https://upcedupe-my.sharepoint.com/:v:/g/personal/u20241d995_upc_edu_pe/IQBTiLZJ_3yESbU6W2h2tA0SATm3CL-mSGMoO3EUsrkm_ak?e=ONsG8Y&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D)
+
+- **Resumen:** Resumen: Kevin, 31 años, es el dueño de un restaurante y administrador del restaurante Palmar, ubicado en Comas. Este restaurante lleva existiendo por más de 20 años, y él actualmente está a cargo del local, relevando a su padre. Si bien es el administrador, también ayuda en las labores de cocina cuando es necesario, por lo que está en contacto con dispositivos como estufas, freidoras e incluso hornos, los cuales funcionan, por supuesto, a base de gas.
+
+  En la actualidad, los métodos de prevención que poseen en caso de incendio o fuga de gas son completamente manuales, ya que dependen de inspeccionar visualmente que no haya ninguna fuga. Kevin indica que, si bien no ha experimentado de primera mano un accidente como el descrito, sí ha escuchado de locales en los cuales esto ha ocurrido, y reconoce el peligro que significa que uno de estos incidentes escale, ya que implicaría perder toda su inversión, además de poner en riesgo a su personal.
+
+  Como administrador del local, opina que se sentiría más seguro si hubiera un sistema que lo alerte de estos incidentes de forma temprana, para evitar pérdidas tanto monetarias como humanas. Considera que SmartGas sería una solución eficiente para dichos incidentes, al notificar a su personal y contar con medidas preventivas para evitar que el problema escale.
+
+#### Entrevista 3:
+
+![Entrevista3.png](./assets/07-entrevista3.png)
+
+- **Nombres y apellidos:** Ruben Isaias Carhuaz Pomachagua
+- **Edad:** 49
+- **Distrito:** Lince
+- **Inicio:** 0:00
+- **Duración:** 4:12
+- **URL:**  [entrevista](https://upcedupe-my.sharepoint.com/:v:/g/personal/u20241d932_upc_edu_pe/IQAtlT93b6nWS5YXY5ZMGrNaAefLFvGOWZS-ZqiV_Y2y53w?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=u8AERl)
+
+- **Resumen:** Resumen: Rubén Carhuaz, de 49 años y gerente de un restaurante con dos años de funcionamiento, reconoce que la tecnología es un recurso indispensable para la seguridad, especialmente porque su operación depende totalmente del gas. Actualmente, sus métodos de prevención son rudimentarios y se limitan a la revisión manual de mangueras, lo que representa un riesgo latente, ya que un incendio o fuga significaría "perderlo todo". Ante este panorama, Rubén se muestra dispuesto a implementar una solución tecnológica que centralice el monitoreo y, sobre todo, emita alertas inmediatas para garantizar la protección de sus trabajadores y clientes.
+
 ### 2.2.3. Análisis de entrevistas
+
+**Segmento 1: Familias y Propietarios de Viviendas**
+
+* **Perfil y Residencia:** 100% reside en zonas urbanas en hogares con 3 o más personas.
+
+* **Equipamiento del Hogar:** 100% utiliza cocinas a gas y cuenta con dispositivos como celulares y laptops.
+
+* **Seguridad Actual:** 100% depende exclusivamente de métodos manuales (revisión visual y olfato) o de la vigilancia de terceros (vecinos).
+
+* **Problemas y Preocupaciones:**
+
+    * 100% manifiesta preocupación o desconfianza ante posibles fugas de gas cuando no están en casa.
+
+    * 50% señala que los sistemas tradicionales no previenen incidentes de forma oportuna.
+
+    * 50% admite que no realiza mantenimientos preventivos con frecuencia.
+
+* **Funciones Valoradas:** 100% prioriza el monitoreo en tiempo real y las alertas automáticas al celular. El 50% también valora la detección de movimiento.
+
+* **Adopción de SmartGas:** 100% está dispuesto a utilizar la aplicación porque les brinda tranquilidad, control y una respuesta rápida ante emergencias.
+
+**Segmento 2: Administradores y Chefs de Restaurantes**
+
+* **Rol y Experiencia:** 100% opera directamente equipos de alto riesgo que dependen del gas.
+
+* **Gestión de Seguridad:** 100% gestiona la seguridad de forma manual mediante inspecciones visuales de mangueras y válvulas.
+
+* **Riesgos Identificados:**
+
+    * 100% afirma que una fuga o incendio significaría "perderlo todo" (inversión y activos).
+
+    * 66% señala que el factor humano es insuficiente durante horas de alta demanda o para detectar peligros invisibles al olfato.
+
+    * 33% destaca el riesgo irreparable a la reputación del negocio.
+
+* **Tecnología y Confianza:** 100% considera la tecnología como un recurso indispensable y confía más en la precisión de los sensores que en el control manual.
+
+* **Funciones Deseadas en SmartGas:** 100% solicita alertas inmediatas al celular. El 66% valora medidas preventivas automáticas y el 33% requiere gráficos de temperatura.
+
+* **Adopción de SmartGas:** 100% considera la solución como una herramienta eficiente e indispensable para centralizar el monitoreo y proteger a sus trabajadores y clientes.
+
 
 ## 2.3. Needfinding
 
