@@ -47,8 +47,8 @@ Mantener una ventaja competitiva a través de la innovación ágil en el softwar
 1. ¿Cuál es su nombre, edad y a qué se dedica actualmente?
 2. ¿En qué distrito vive y con cuántas personas comparte su hogar?
 3. ¿Qué tipo de dispositivos utiliza con mayor frecuencia (celular, laptop, tablet)?
-4. ¿Qué aplicaciones o páginas web usa en su día a día?
-5. ¿Qué tan familiarizado está con el uso de aplicaciones web o dispositivos inteligentes en el hogar?
+4. ¿Qué aplicaciones o páginas usa en su día a día?
+5. ¿Qué tan familiarizado está con el uso de aplicaciones o dispositivos inteligentes en el hogar?
 6. En su vivienda, ¿qué tipo de cocina utiliza (gas, eléctrica, mixta)?
 7. ¿Ha tenido alguna experiencia o conoce casos cercanos de fugas de gas o incendios domésticos?
 8. ¿Qué medidas de seguridad tiene actualmente en su hogar para prevenir estos riesgos?
@@ -57,7 +57,7 @@ Mantener una ventaja competitiva a través de la innovación ágil en el softwar
 11. Si ocurriera una fuga de gas mientras usted no está presente, ¿cómo se enteraría?
 12. ¿Qué dificultades encuentra al depender solo de revisiones manuales o alarmas tradicionales?
 13. ¿Le gustaría poder monitorear el estado de su hogar en tiempo real desde su celular o navegador?
-14. ¿Qué funcionalidades le parecerían más útiles en una plataforma web de seguridad doméstica (alertas, historial, visualización en tiempo real, etc.)?
+14. ¿Qué funcionalidades le parecerían más útiles en una plataforma de seguridad doméstica (alertas, historial, visualización en tiempo real, etc.)?
 15. ¿Estaría dispuesto a usar una aplicación como SmartGas que le envíe alertas automáticas ante riesgos? ¿Por qué?
 
 **Segmento Objetivo 2: Administradores y Chefs de Restaurantes**
@@ -75,7 +75,7 @@ Mantener una ventaja competitiva a través de la innovación ágil en el softwar
 11. ¿Qué consecuencias tendría para su negocio una fuga de gas o un incendio?
 12. ¿Qué tan complicado es llevar un registro o historial de incidentes de seguridad actualmente?
 13. ¿Le resultaría útil contar con un sistema centralizado que monitoree múltiples áreas o locales en tiempo real?
-14. ¿Qué funciones considera indispensables en una plataforma web de monitoreo (alertas automáticas, reportes, control por zonas, etc.)?
+14. ¿Qué funciones considera indispensables en una plataforma de monitoreo (alertas automáticas, reportes, control por zonas, etc.)?
 15. ¿Estaría dispuesto a implementar una solución como SmartGas para mejorar la seguridad de su negocio? ¿Por qué?
 
 
@@ -307,9 +307,9 @@ A continuación, se presentan los principales términos definidos:
 
 * Alerta de seguridad: Notificación generada por el sistema cuando se detecta una anomalía.
 
-* Notificación en tiempo real: Mensaje enviado al usuario a través de la web o servicios externos de forma inmediata.
+* Notificación en tiempo real: Mensaje enviado al usuario o servicios externos de forma inmediata.
 
-* Dashboard de monitoreo: Interfaz web donde el usuario visualiza el estado de sus sensores y niveles de seguridad.
+* Dashboard de monitoreo: Interfaz móvil donde el usuario visualiza el estado de sus sensores y niveles de seguridad.
 
 * Historial de incidencias: Registro almacenado de eventos relacionados con anomalías o alertas detectadas.
 
