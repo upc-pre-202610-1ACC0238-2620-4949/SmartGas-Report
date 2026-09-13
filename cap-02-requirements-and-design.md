@@ -386,6 +386,44 @@ En esta sección se presentan las épicas y user stories identificadas para Smar
 
 ### 2.4.3. Product Backlog
 
+
+En esta sección se presenta el Product Backlog de SmartGas, organizado según el valor que cada User Story aporta al negocio y a los usuarios. La priorización considera como elementos principales el monitoreo preventivo, la detección temprana de riesgos, las alertas inmediatas y la capacidad de respuesta ante incidentes en hogares y restaurantes.
+
+| # Orden | User Story ID | Título | Story Points (1 / 2 / 3 / 5 / 8) | Sprint |
+|---|---|---|---|---|
+| 1 | US09 | Ver estado en tiempo real | 8 | Sprint 1 |
+| 2 | US10 | Actualizar datos automáticamente | 8 | Sprint 1 |
+| 3 | US12 | Detectar fuga de gas | 8 | Sprint 1 |
+| 4 | US13 | Detectar temperatura anómala | 8 | Sprint 1 |
+| 5 | US15 | Recibir notificación push | 8 | Sprint 1 |
+| 6 | US11 | Ver estado general de seguridad | 5 | Sprint 1 |
+| 7 | US16 | Visualizar alertas activas | 5 | Sprint 1 |
+| 8 | US05 | Registrar sensor | 5 | Sprint 1 |
+| 9 | US06 | Asociar sensor a zona | 5 | Sprint 1 |
+| 10 | US14 | Generar evento de anomalía | 5 | Sprint 2 |
+| 11 | US17 | Confirmar alerta recibida | 3 | Sprint 2 |
+| 12 | US18 | Marcar alerta como atendida | 3 | Sprint 2 |
+| 13 | US19 | Consultar historial | 5 | Sprint 2 |
+| 14 | US20 | Filtrar historial por fecha | 3 | Sprint 2 |
+| 15 | US21 | Generar reporte de seguridad | 5 | Sprint 2 |
+| 16 | US22 | Configurar límites de seguridad | 5 | Sprint 2 |
+| 17 | US23 | Configurar contactos de emergencia | 3 | Sprint 2 |
+| 18 | US24 | Configurar preferencias de notificación | 3 | Sprint 2 |
+| 19 | US25 | Guardar datos locales | 5 | Sprint 2 |
+| 20 | US26 | Usar notificaciones del dispositivo | 5 | Sprint 2 |
+| 21 | US27 | Usar cámara para registrar sensor | 5 | Sprint 3 |
+| 22 | US08 | Ver sensores registrados | 3 | Sprint 3 |
+| 23 | US07 | Configurar sensor | 5 | Sprint 3 |
+| 24 | US01 | Registrarse en la app | 5 | Sprint 3 |
+| 25 | US02 | Iniciar sesión | 5 | Sprint 3 |
+| 26 | US03 | Gestionar perfil | 3 | Sprint 3 |
+| 27 | US04 | Cerrar sesión | 1 | Sprint 3 |
+| 28 | TS01 | API de autenticación | 5 | Sprint 1 |
+| 29 | TS02 | API de sensores | 8 | Sprint 1 |
+| 30 | TS03 | API de telemetría | 8 | Sprint 1 |
+| 31 | TS04 | API de alertas | 5 | Sprint 2 |
+| 32 | TS05 | Integración con servicio externo | 5 | Sprint 2 |
+| 33 | SP01 | Investigar tecnología móvil nueva | 3 | Sprint 1 |
 ## 2.5. Strategic-Level Domain-Driven Design
 
 ### 2.5.1. EventStorming
