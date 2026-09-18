@@ -1,0 +1,71 @@
+<div align="center">
+
+  <img src="./assets/Logo-UPC.png" alt="Logo UPC" width="100">
+
+  <p>Universidad Peruana de Ciencias Aplicadas<br>
+  Carrera de Ingeniería de Software</p>
+
+  <br>
+
+  <p><strong>1ACC0238</strong><br>
+  <strong>Aplicaciones para Dispositivos Móviles</strong></p>
+
+  <p>NRC<br>
+  <strong>4949</strong></p>
+
+  <br>
+
+<h3><strong>Informe del Trabajo Final</strong></h3>
+
+  <br>
+
+  <p>Docente<br>
+  <strong>Quevedo Velasco, David Gerardo</strong></p>
+
+  <br>
+
+  <p>Equipo<br>
+  <strong>FireSecure</strong></p>
+
+  <br>
+
+  <p>Proyecto<br>
+  <strong>SmartGas</strong></p>
+
+<br><br>
+
+  <p><strong>Integrantes</strong></p>
+
+<table style="margin: 0 auto; border-collapse: collapse;">
+  <tr>
+    <th style="text-align:left; padding: 2px 20px;">Código</th>
+    <th style="text-align:left; padding: 2px 20px;">Apellidos y Nombres</th>
+  </tr>
+  <tr>
+    <td style="padding: 2px 20px;">U202310436</td>
+    <td style="padding: 2px 20px;">Espinar Martínez, Gabriel Ferran</td>
+  </tr>
+  <tr>
+    <td style="padding: 2px 20px;">U202318951</td>
+    <td style="padding: 2px 20px;">Guevara Serrano, Diego Ismael</td>
+  </tr>
+  <tr>
+    <td style="padding: 2px 20px;">U202210513</td>
+    <td style="padding: 2px 20px;">Huaman Olivos, Yeira Shari</td>
+  </tr>
+  <tr>
+    <td style="padding: 2px 20px;">U202221597</td>
+    <td style="padding: 2px 20px;">Rioja Nuñez, Franco Diego</td>
+  </tr>
+  <tr>
+    <td style="padding: 2px 20px;">U202414424</td>
+    <td style="padding: 2px 20px;">Vivar Cesar, David Ignacio</td>
+  </tr>
+</table>
+
+<br><br>
+<p><strong>Período 202620</strong></p>
+
+<br>
+<p><strong>Septiembre 2026</strong></p>
+<div style="page-break-after: always;"></div>
