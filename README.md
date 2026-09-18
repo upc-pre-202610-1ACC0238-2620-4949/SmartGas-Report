@@ -69,3 +69,18 @@
 <br>
 <p><strong>Septiembre 2026</strong></p>
 <div style="page-break-after: always;"></div>
+
+## Registro de Versiones del Informe
+
+| Version | Fecha      | Autor | Descripcion de Modificacion                                                                                                                   |
+|--------|------------|------|-----------------------------------------------------------------------------------------------------------------------------------------------|
+| 0.1 | 09/09/2026 | Equipo | Se actualizó el README incorporando el perfil de la solución, antecedentes, problemática, misión, visión y perfiles del equipo.               |
+| 0.2 | 10/09/2026 | Equipo | Se desarrolló el Capítulo 1, incluyendo Lean UX Problem Statements, Assumptions, Hypothesis Statements, segmentos objetivos y Lean UX Canvas. |
+| 0.3 | 11/09/2026 | Equipo | Se añadieron business assumptions y se consolidó la documentación Lean UX.                                                                    |
+| 0.4 | 12/09/2026 | Equipo | Se diseñaron y documentaron las entrevistas.                                                                                                  |
+| 0.5 | 13/09/2026 | Equipo | Se añadieron entrevistas de los segmentos objetivo.                                                                                           |
+| 0.6 | 14/09/2026 | Equipo | Se incorporaron y corrigieron entrevistas.                                                                                                    |
+| 0.7 | 14/09/2026 | Equipo | Se añadieron user personas, needfinding y evidencias.                                                                                         |
+| 0.8 | 14/09/2026 | Equipo | Se desarrolló el análisis de entrevistas, Ubiquitous Language y EventStorming.                                                                |
+| 0.9 | 14/09/2026 | Equipo | Se añadieron resúmenes de entrevistas y User Journey Mapping.                                                                                 |
+
