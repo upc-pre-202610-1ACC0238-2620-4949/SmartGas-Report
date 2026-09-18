@@ -88,7 +88,7 @@ Para solucionar este vacío, es imperativo desarrollar una aplicación móvil ba
 
 ### 1.2.2.3. Lean UX Hypothesis Statements.
 **Business Hypothesis**
-Si logramos desarrollar una plataforma web que no solo centralice los datos, sino que además permita gestionar respuestas automáticas y notificaciones remotas a través de una arquitectura SOA en C#, entonces los usuarios percibirán un alto valor preventivo y comercial, lo que se traducirá en una rápida adopción del modelo de suscripción SaaS y una ventaja competitiva frente a sistemas de alarma locales que no ofrecen conectividad web.
+Si logramos desarrollar una aplicación móvil que no solo centralice los datos, sino que además permita gestionar respuestas automáticas y notificaciones remotas a través de una arquitectura SOA en C#, entonces los usuarios percibirán un alto valor preventivo y comercial, lo que se traducirá en una rápida adopción del modelo de suscripción SaaS y una ventaja competitiva frente a sistemas de alarma locales que no ofrecen este tipo de conectividad.
 
 **User Hypothesis**
 * **Cocinas Domésticas (Familias):** Creemos que las familias necesitan una aplicación móvil de seguridad intuitiva que les permita monitorear su hogar remotamente desde sus smartphones, ya que su prioridad es la protección de sus seres queridos mediante alertas en tiempo real sin lidiar con configuraciones técnicas complejas.
