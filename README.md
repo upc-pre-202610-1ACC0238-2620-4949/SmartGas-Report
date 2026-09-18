@@ -84,3 +84,17 @@
 | 0.8 | 14/09/2026 | Equipo | Se desarrolló el análisis de entrevistas, Ubiquitous Language y EventStorming.                                                                |
 | 0.9 | 14/09/2026 | Equipo | Se añadieron resúmenes de entrevistas y User Journey Mapping.                                                                                 |
 
+## Project Report Collaboration Insights
+
+**Link de la organización:**
+https://github.com/upc-pre-202610-1ACC0238-2620-4949
+
+**Link del Repositorio del Informe:** https://github.com/upc-pre-202610-1ACC0238-2620-4949/SmartGas-Report
+
+### Reporte de Colaboración para la Entrega del AV1
+
+## Contributors
+
+<img src="assets/ss1.PNG" alt="Mi imagen" width="600"> <br>
+
+
