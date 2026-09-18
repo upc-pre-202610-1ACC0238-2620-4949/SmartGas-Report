@@ -547,129 +547,866 @@ El diagrama de despliegue representa la distribución física de SmartGas. La ap
 
 ## 2.6. Tactical-Level Domain-Driven Design
 
+En esta sección se presenta la propuesta táctica de diseño de la solución, con una sección interna por cada Bounded Context identificado en 2.5.
+
+Ambos productos aplican una **arquitectura en capas por bounded context**:
+
+- **Web Services (`SmartGas.Api`):** *Interface Layer* → `Controllers/`; *Application Layer* → `Services/`; *Domain Layer* → `Models/`; *Infrastructure Layer* → `Data/AppDbContext.cs`, `Migrations/` y servicios externos.
+- **Web Application (`SmartGas-Frontend`):** cada bounded context replica la estructura `domain/model/` (entities), `application/` (stores), `infrastructure/` (services HTTP) y `presentation/pages|components/` (vistas), tal como se observa en `src/incident-detection/incidents/`.
+
+**Diagrama de clases del Domain Layer (consolidado):**
+
+```mermaid
+classDiagram
+    class Account {
+        +int Id
+        +string Email
+        +string PasswordHash
+        +string Role
+        +string Status
+        +DateTime CreatedAt
+        +DateTime UpdatedAt
+    }
+    class Profile {
+        +int Id
+        +int AccountId
+        +string FullName
+        +string BusinessName
+        +string Phone
+        +string District
+        +string Address
+    }
+    class Setting {
+        +int Id
+        +int AccountId
+        +string Language
+        +bool DarkMode
+        +bool NotificationsEnabled
+        +decimal GasThreshold
+        +decimal TemperatureThreshold
+    }
+    class EmergencyContact {
+        +int Id
+        +int AccountId
+        +string Name
+        +string Phone
+        +string Email
+    }
+    class Zone {
+        +int Id
+        +int AccountId
+        +string Name
+        +string Description
+        +string Status
+        +string Sensitivity
+    }
+    class Sensor {
+        +int Id
+        +int AccountId
+        +int ZoneId
+        +string Code
+        +string Name
+        +string Type
+        +string Status
+        +int BatteryLevel
+    }
+    class SensorReading {
+        +int Id
+        +int AccountId
+        +int ZoneId
+        +int SensorId
+        +decimal GasLevel
+        +decimal Temperature
+        +DateTime CreatedAt
+    }
+    class Incident {
+        +int Id
+        +int AccountId
+        +int ZoneId
+        +int SensorId
+        +int SensorReadingId
+        +string Type
+        +string Severity
+        +string Status
+        +DateTime DetectedAt
+        +DateTime ReviewedAt
+        +DateTime ResolvedAt
+        +string Notes
+    }
+    class Alert {
+        +int Id
+        +int AccountId
+        +int IncidentId
+        +string Title
+        +string Message
+        +string Severity
+        +string Status
+        +DateTime ResolvedAt
+    }
+    class Notification {
+        +int Id
+        +int AccountId
+        +int IncidentId
+        +int AlertId
+        +string Channel
+        +string Title
+        +string Message
+        +bool IsRead
+        +bool IsConfirmed
+    }
+    class Plan {
+        +int Id
+        +string Name
+        +decimal Price
+        +int MaxZones
+        +int MaxSensors
+        +string Features
+        +bool IsActive
+    }
+    class Subscription {
+        +int Id
+        +int AccountId
+        +int PlanId
+        +string Status
+        +DateTime StartDate
+        +DateTime RenewalDate
+    }
+
+    Account "1" --> "0..1" Profile
+    Account "1" --> "0..1" Setting
+    Account "1" --> "0..1" EmergencyContact
+    Account "1" --> "*" Subscription
+    Account "1" --> "*" Zone
+    Account "1" --> "*" Sensor
+    Account "1" --> "*" Incident
+    Account "1" --> "*" Notification
+    Plan "1" --> "*" Subscription
+    Zone "1" --> "*" Sensor
+    Zone "1" --> "*" SensorReading
+    Sensor "1" --> "*" SensorReading
+    Sensor "1" --> "*" Incident
+    SensorReading "0..1" --> "0..1" Incident
+    Incident "1" --> "*" Alert
+    Incident "0..1" --> "*" Notification
+    Alert "0..1" --> "*" Notification
+```
+
 ### 2.6.1. Bounded Context: IAM (Identity and Access Management)
 
 #### 2.6.1.1. Domain Layer
+| Clase | Tipo DDD | Propósito |
+| :--- | :--- | :--- |
+| `Account` | Aggregate Root | Raíz de agregación del usuario: credenciales (`Email`, `PasswordHash`), `Role` (HomeOwner / RestaurantAdmin) y `Status`. Invariante: `Email` único. |
+| `Profile` | Entity | Datos personales o del negocio: `FullName`, `BusinessName`, `Phone`, `District`, `Address`. Relación 1:1 con `Account`. |
+| `Setting` | Entity | Preferencias e **invariantes de seguridad**: `GasThreshold`, `TemperatureThreshold`, `Language`, `DarkMode`, `NotificationsEnabled`. |
+| `EmergencyContact` | Entity | Contacto al que escalar una emergencia. Invariante: único por cuenta (índice único sobre `AccountId`). |
 
 #### 2.6.1.2. Interface Layer
+| Controller | Endpoint | Acción |
+| :--- | :--- | :--- |
+| `AuthController` | `POST /api/v1/auth/sign-up` | Registro de cuenta |
+| `AuthController` | `POST /api/v1/auth/sign-in` | Autenticación |
+| `ProfilesController` | `GET` · `PATCH /api/v1/profiles/{accountId}` | Consulta y actualización de perfil |
+| `SettingsController` | `GET` · `PATCH /api/v1/settings/{accountId}` | Consulta y actualización de umbrales y preferencias |
+| `EmergencyContactsController` | `GET` · `PATCH /api/v1/emergency-contacts/{accountId}` | Gestión del contacto de emergencia |
+
+En la Web Application, este contexto se expone mediante `src/iam/presentation/pages/` (`login-page`, `register-page`, `profile-page`, `settings-page`), y la sesión se conserva en el cliente mediante `SessionService` (clave `smartgas_session_v1` en `localStorage`), consumida por el guard `requiresAuth` del router.
 
 #### 2.6.1.3. Application Layer
+- `AuthService` — `SignUpAsync(SignUpRequest)`, `SignInAsync(SignInRequest)`: orquesta la creación de `Account` + `Profile` + `Setting` + suscripción inicial, y valida credenciales.
+- `ProfileService` — `GetByAccountAsync(int)`, `UpdateAsync(int, UpdateProfileRequest)`.
+- `SettingService` — `GetByAccountAsync(int)`, `UpdateAsync(int, UpdateSettingRequest)`.
+- `EmergencyContactService` — `GetByAccountAsync(int)`, `UpdateAsync(...)`.
 
 #### 2.6.1.4. Infrastructure Layer
+- `AppDbContext` con `DbSet<Account>`, `DbSet<Profile>`, `DbSet<Setting>`, `DbSet<EmergencyContact>`; relaciones 1:1 con `DeleteBehavior.Cascade` e índice único sobre `Account.Email`.
+- Proveedor **Npgsql (PostgreSQL)**; migraciones EF Core (`InitialCreate`, `AddEmergencyContact`).
+- Localización de mensajes mediante archivos `.resx` por controller (`en-US` por defecto, `es-419`, `es-ES`).
 
 #### 2.6.1.5. Bounded Context Software Architecture Component Level Diagrams
+```mermaid
+flowchart LR
+    subgraph IAM["Container: SmartGas.Api — Bounded Context IAM"]
+        AC["AuthController"]
+        PC["ProfilesController"]
+        SC["SettingsController"]
+        EC["EmergencyContactsController"]
+        AS["AuthService"]
+        PS["ProfileService"]
+        SS["SettingService"]
+        ES["EmergencyContactService"]
+        CTX["AppDbContext"]
+    end
+    DB[("PostgreSQL")]
+
+    AC --> AS
+    PC --> PS
+    SC --> SS
+    EC --> ES
+    AS --> CTX
+    PS --> CTX
+    SS --> CTX
+    ES --> CTX
+    CTX --> DB
+```
 
 #### 2.6.1.6. Bounded Context Software Architecture Code Level Diagrams
-
 ##### 2.6.1.6.1. Bounded Context Domain Layer Class Diagrams
-
+```mermaid
+classDiagram
+    class Account {
+        +int Id
+        +string Email
+        +string PasswordHash
+        +string Role
+        +string Status
+        +DateTime CreatedAt
+        +DateTime UpdatedAt
+    }
+    class Profile {
+        +int Id
+        +int AccountId
+        +string FullName
+        +string BusinessName
+        +string Phone
+        +string District
+        +string Address
+    }
+    class Setting {
+        +int Id
+        +int AccountId
+        +string Language
+        +bool DarkMode
+        +bool NotificationsEnabled
+        +decimal GasThreshold
+        +decimal TemperatureThreshold
+    }
+    class EmergencyContact {
+        +int Id
+        +int AccountId
+        +string Name
+        +string Phone
+        +string Email
+    }
+    Account "1" --> "0..1" Profile
+    Account "1" --> "0..1" Setting
+    Account "1" --> "0..1" EmergencyContact
+```
 ##### 2.6.1.6.2. Bounded Context Database Design Diagram
+```mermaid
+erDiagram
+    ACCOUNTS ||--o| PROFILES : has
+    ACCOUNTS ||--o| SETTINGS : has
+    ACCOUNTS ||--o| EMERGENCY_CONTACTS : has
+    ACCOUNTS {
+        int Id PK
+        string Email UK
+        string PasswordHash
+        string Role
+        string Status
+        timestamp CreatedAt
+        timestamp UpdatedAt
+    }
+    PROFILES {
+        int Id PK
+        int AccountId FK
+        string FullName
+        string BusinessName
+        string Phone
+        string District
+        string Address
+    }
+    SETTINGS {
+        int Id PK
+        int AccountId FK
+        string Language
+        bool DarkMode
+        bool NotificationsEnabled
+        decimal GasThreshold
+        decimal TemperatureThreshold
+    }
+    EMERGENCY_CONTACTS {
+        int Id PK
+        int AccountId FK,UK
+        string Name
+        string Phone
+        string Email
+    }
+```
 
 ### 2.6.2. Bounded Context: Kitchen Monitoring
 
 #### 2.6.2.1. Domain Layer
+| Clase | Tipo DDD | Propósito |
+| :--- | :--- | :--- |
+| `Zone` | Aggregate Root | Ambiente monitoreado (cocina, almacén, barra). Atributos `Status` (Safe / Warning / Critical) y `Sensitivity`. |
+| `Sensor` | Entity | Dispositivo IoT asociado a una zona. `Code` único, `Type` (Gas, GasLP, CO, Smoke, MultiSensor), `Status` y `BatteryLevel`. |
+| `SensorReading` | Entity de solo lectura | Lectura de telemetría con `GasLevel` y `Temperature` (ambos opcionales) y marca temporal; es inmutable una vez creada. |
+
+**Reglas de dominio implementadas en este contexto** (`SensorReadingService`): normalización del tipo de sensor (`NormalizeSensorTypeForRules`), evaluación de umbrales (`GetIncidentType`), cálculo de severidad (`GetSeverity`) y actualización en cascada del estado de `Sensor` y `Zone`.
 
 #### 2.6.2.2. Interface Layer
+| Controller | Endpoint | Acción |
+| :--- | :--- | :--- |
+| `ZonesController` | `GET` · `POST /api/v1/zones` | Listar y crear zonas |
+| `SensorsController` | `GET` · `POST /api/v1/sensors`, `PATCH /api/v1/sensors/{id}` | Listar, registrar y actualizar sensores |
+| `SensorReadingsController` | `GET` · `POST /api/v1/sensor-readings` | Consultar telemetría y registrar nuevas lecturas |
+
+En la Web Application corresponde a `src/kitchen-monitoring/monitoring/` y `src/kitchen-monitoring/devices/`, con las rutas `/app/monitoring` y `/app/devices`.
 
 #### 2.6.2.3. Application Layer
+- `ZoneService` — `GetByAccountAsync(int)`, `CreateAsync(CreateZoneRequest)` (valida límites de plan mediante `PlanLimitService`).
+- `SensorService` — `GetByAccountAsync(int)`, `CreateAsync(CreateSensorRequest)`, `UpdateAsync(int, UpdateSensorRequest)`.
+- `SensorReadingService` — `GetByAccountAsync(int)`, `CreateAsync(CreateSensorReadingRequest)`: **command handler principal del sistema**, ya que desencadena la creación de `Incident`, `Alert` y `Notification`.
 
 #### 2.6.2.4. Infrastructure Layer
+- `AppDbContext` con `DbSet<Zone>`, `DbSet<Sensor>`, `DbSet<SensorReading>`; índice único sobre `Sensor.Code`; eliminación en cascada desde `Account` y desde `Zone`.
 
 #### 2.6.2.5. Bounded Context Software Architecture Component Level Diagrams
+```mermaid
+flowchart LR
+    subgraph KM["Container: SmartGas.Api — Bounded Context Kitchen Monitoring"]
+        ZC["ZonesController"]
+        SC["SensorsController"]
+        RC["SensorReadingsController"]
+        ZS["ZoneService"]
+        SS["SensorService"]
+        RS["SensorReadingService"]
+        PL["PlanLimitService<br/><i>(Payment Management)</i>"]
+        CTX["AppDbContext"]
+    end
+    ID["Incident Detection"]
+    DB[("PostgreSQL")]
+
+    ZC --> ZS
+    SC --> SS
+    RC --> RS
+    ZS --> PL
+    SS --> PL
+    ZS --> CTX
+    SS --> CTX
+    RS --> CTX
+    RS -->|"crea Incident"| ID
+    CTX --> DB
+```
 
 #### 2.6.2.6. Bounded Context Software Architecture Code Level Diagrams
-
 ##### 2.6.2.6.1. Bounded Context Domain Layer Class Diagrams
-
+```mermaid
+classDiagram
+    class Zone {
+        +int Id
+        +int AccountId
+        +string Name
+        +string Description
+        +string Status
+        +string Sensitivity
+        +DateTime CreatedAt
+        +DateTime UpdatedAt
+    }
+    class Sensor {
+        +int Id
+        +int AccountId
+        +int ZoneId
+        +string Code
+        +string Name
+        +string Type
+        +string Status
+        +int BatteryLevel
+    }
+    class SensorReading {
+        +int Id
+        +int AccountId
+        +int ZoneId
+        +int SensorId
+        +decimal GasLevel
+        +decimal Temperature
+        +DateTime CreatedAt
+    }
+    Zone "1" --> "*" Sensor
+    Zone "1" --> "*" SensorReading
+    Sensor "1" --> "*" SensorReading
+```
 ##### 2.6.2.6.2. Bounded Context Database Design Diagram
+```mermaid
+erDiagram
+    ZONES ||--o{ SENSORS : contains
+    ZONES ||--o{ SENSOR_READINGS : registers
+    SENSORS ||--o{ SENSOR_READINGS : produces
+    ZONES {
+        int Id PK
+        int AccountId FK
+        string Name
+        string Description
+        string Status
+        string Sensitivity
+    }
+    SENSORS {
+        int Id PK
+        int AccountId FK
+        int ZoneId FK
+        string Code UK
+        string Name
+        string Type
+        string Status
+        int BatteryLevel
+    }
+    SENSOR_READINGS {
+        int Id PK
+        int AccountId FK
+        int ZoneId FK
+        int SensorId FK
+        decimal GasLevel
+        decimal Temperature
+        timestamp CreatedAt
+    }
+```
 
 ### 2.6.3. Bounded Context: Incident Detection
 
 #### 2.6.3.1. Domain Layer
+| Clase | Tipo DDD | Propósito |
+| :--- | :--- | :--- |
+| `Incident` | Aggregate Root | Riesgo detectado automáticamente. `Type`, `Severity` (High / Critical), `Status` (Active / Reviewed / Resolved / FalseAlarm), trazabilidad temporal (`DetectedAt`, `ReviewedAt`, `ResolvedAt`) y `Notes`. Referencia la `SensorReading` que lo originó. |
+
+En la Web Application, la entidad correspondiente es `src/incident-detection/incidents/domain/model/incident.entity.js`.
 
 #### 2.6.3.2. Interface Layer
+| Controller | Endpoint | Acción |
+| :--- | :--- | :--- |
+| `IncidentsController` | `GET /api/v1/incidents` | Listar incidentes de la cuenta |
+| `IncidentsController` | `PATCH /api/v1/incidents/{id}/review` | Marcar como revisado |
+| `IncidentsController` | `PATCH /api/v1/incidents/{id}/resolve` | Resolver incidente |
+| `IncidentsController` | `PATCH /api/v1/incidents/{id}/false-alarm` | Marcar como falsa alarma |
+
+Cliente: `IncidentsPage` (`/app/incidents`), con `incident.store.js` como capa de aplicación e `incident.service.js` como infraestructura HTTP.
 
 #### 2.6.3.3. Application Layer
+- `IncidentService` — `GetByAccountAsync(int)`, `ReviewAsync(int)`, `ResolveAsync(int)`, `FalseAlarmAsync(int)`: command handlers de transición de estado del incidente.
+- En el cliente, `incidentStore` expone `getIncidents`, `markReviewed`, `markResolved`, `markFalseAlarm` y `addNote`.
 
 #### 2.6.3.4. Infrastructure Layer
+- `AppDbContext` con `DbSet<Incident>`; relación `Incident → SensorReading` con `DeleteBehavior.SetNull` (eliminar una lectura no destruye el historial del incidente) y relaciones en cascada hacia `Account`, `Zone` y `Sensor`.
 
 #### 2.6.3.5. Bounded Context Software Architecture Component Level Diagrams
+```mermaid
+flowchart LR
+    subgraph ID["Container: SmartGas.Api — Bounded Context Incident Detection"]
+        IC["IncidentsController"]
+        IS["IncidentService"]
+        CTX["AppDbContext"]
+    end
+    KM["Kitchen Monitoring<br/>(SensorReadingService)"]
+    IPN["Incident Prevention & Notification"]
+    DB[("PostgreSQL")]
+
+    KM -->|"lectura con anomalía"| IS
+    IC --> IS
+    IS --> CTX
+    IS -->|"incidente confirmado"| IPN
+    CTX --> DB
+```
 
 #### 2.6.3.6. Bounded Context Software Architecture Code Level Diagrams
-
 ##### 2.6.3.6.1. Bounded Context Domain Layer Class Diagrams
-
+```mermaid
+classDiagram
+    class Incident {
+        +int Id
+        +int AccountId
+        +int ZoneId
+        +int SensorId
+        +int SensorReadingId
+        +string Type
+        +string Severity
+        +string Status
+        +DateTime DetectedAt
+        +DateTime ReviewedAt
+        +DateTime ResolvedAt
+        +string Notes
+        +DateTime CreatedAt
+        +DateTime UpdatedAt
+    }
+```
 ##### 2.6.3.6.2. Bounded Context Database Design Diagram
+```mermaid
+erDiagram
+    INCIDENTS {
+        int Id PK
+        int AccountId FK
+        int ZoneId FK
+        int SensorId FK
+        int SensorReadingId FK
+        string Type
+        string Severity
+        string Status
+        timestamp DetectedAt
+        timestamp ReviewedAt
+        timestamp ResolvedAt
+        string Notes
+    }
+```
 
 ### 2.6.4. Bounded Context: Incident Prevention & Notification
 
 #### 2.6.4.1. Domain Layer
+| Clase | Tipo DDD | Propósito |
+| :--- | :--- | :--- |
+| `Alert` | Aggregate Root | Mensaje accionable derivado de un incidente: `Title`, `Message`, `Severity`, `Status` y `ResolvedAt`. |
+| `Notification` | Entity | Entrega al usuario por un `Channel` (Web, Push, SMS, Email). Controla el ciclo de vida mediante `IsRead`/`ReadAt` e `IsConfirmed`/`ConfirmedAt`. Referencias opcionales a `Incident` y `Alert`. |
+
+En la Web Application, ambas entidades están declaradas en `src/incident-prevention-notification/domain/model/`.
 
 #### 2.6.4.2. Interface Layer
+| Controller | Endpoint | Acción |
+| :--- | :--- | :--- |
+| `AlertsController` | `GET /api/v1/alerts` | Listar alertas de la cuenta |
+| `NotificationsController` | `GET /api/v1/notifications` | Historial de notificaciones |
+| `NotificationsController` | `PATCH /api/v1/notifications/{id}/read` | Marcar como leída |
+| `NotificationsController` | `PATCH /api/v1/notifications/{id}/confirm` | Confirmar recepción (US-20) |
 
 #### 2.6.4.3. Application Layer
+- `AlertService` — `GetByAccountAsync(int)`.
+- `NotificationService` — `GetByAccountAsync(int)`, `MarkAsReadAsync(int)`, `ConfirmAsync(int)`.
 
 #### 2.6.4.4. Infrastructure Layer
+- `AppDbContext` con `DbSet<Alert>` y `DbSet<Notification>`; `Alert → Incident` en cascada, y `Notification → Incident`/`Alert` con `DeleteBehavior.SetNull`.
 
 #### 2.6.4.5. Bounded Context Software Architecture Component Level Diagrams
+```mermaid
+flowchart LR
+    subgraph IPN["Container: SmartGas.Api — Bounded Context Incident Prevention & Notification"]
+        AC["AlertsController"]
+        NC["NotificationsController"]
+        AS["AlertService"]
+        NS["NotificationService"]
+        CTX["AppDbContext"]
+    end
+    ID["Incident Detection"]
+    FCM(["Firebase Cloud Messaging<br/><i>por integrar</i>"])
+    DB[("PostgreSQL")]
+
+    ID -->|"incidente confirmado"| AS
+    AC --> AS
+    NC --> NS
+    AS --> CTX
+    NS --> CTX
+    NS -.->|"push (pendiente)"| FCM
+    CTX --> DB
+```
 
 #### 2.6.4.6. Bounded Context Software Architecture Code Level Diagrams
-
 ##### 2.6.4.6.1. Bounded Context Domain Layer Class Diagrams
-
+```mermaid
+classDiagram
+    class Alert {
+        +int Id
+        +int AccountId
+        +int IncidentId
+        +string Title
+        +string Message
+        +string Severity
+        +string Status
+        +DateTime CreatedAt
+        +DateTime ResolvedAt
+    }
+    class Notification {
+        +int Id
+        +int AccountId
+        +int IncidentId
+        +int AlertId
+        +string Channel
+        +string Title
+        +string Message
+        +bool IsRead
+        +bool IsConfirmed
+        +DateTime CreatedAt
+        +DateTime ReadAt
+        +DateTime ConfirmedAt
+    }
+    Alert "0..1" --> "*" Notification
+```
 ##### 2.6.4.6.2. Bounded Context Database Design Diagram
+```mermaid
+erDiagram
+    ALERTS ||--o{ NOTIFICATIONS : delivers
+    ALERTS {
+        int Id PK
+        int AccountId FK
+        int IncidentId FK
+        string Title
+        string Message
+        string Severity
+        string Status
+        timestamp CreatedAt
+        timestamp ResolvedAt
+    }
+    NOTIFICATIONS {
+        int Id PK
+        int AccountId FK
+        int IncidentId FK
+        int AlertId FK
+        string Channel
+        string Title
+        string Message
+        bool IsRead
+        bool IsConfirmed
+        timestamp CreatedAt
+        timestamp ReadAt
+        timestamp ConfirmedAt
+    }
+```
 
 ### 2.6.5. Bounded Context: Post-Incident Procedures
 
 #### 2.6.5.1. Domain Layer
+| Clase | Tipo DDD | Propósito |
+| :--- | :--- | :--- |
+| `SecurityReport` | Read Model | Reporte de seguridad construido a partir del historial de incidentes, alertas y zonas de la cuenta. No posee persistencia propia. |
+
+Implementado en la Web Application como `src/post-incident-procedures/reports/domain/model/security-report.entity.js`.
 
 #### 2.6.5.2. Interface Layer
+Ruta `/app/reports` (`ReportsPage`). Este contexto no expone controllers propios en los Web Services: compone la información consumiendo los endpoints `GET /api/v1/incidents`, `GET /api/v1/alerts` y `GET /api/v1/zones`.
 
 #### 2.6.5.3. Application Layer
+- `reportStore` (cliente) — orquesta la obtención y el filtrado de los datos del reporte.
+- `ReportService.getReportData(accountId)` — ejecuta en paralelo las tres consultas y compone el resultado.
 
 #### 2.6.5.4. Infrastructure Layer
+- Cliente HTTP compartido `api-client.js` (axios) apuntando a `VITE_API_BASE_URL`.
 
 #### 2.6.5.5. Bounded Context Software Architecture Component Level Diagrams
+```mermaid
+flowchart LR
+    subgraph PIP["Container: Web/Mobile App — Bounded Context Post-Incident Procedures"]
+        RP["ReportsPage"]
+        RS["reportStore"]
+        RSV["ReportService"]
+    end
+    API["SmartGas.Api<br/>/incidents · /alerts · /zones"]
+
+    RP --> RS
+    RS --> RSV
+    RSV -->|"HTTP (axios)"| API
+```
 
 #### 2.6.5.6. Bounded Context Software Architecture Code Level Diagrams
-
 ##### 2.6.5.6.1. Bounded Context Domain Layer Class Diagrams
-
+```mermaid
+classDiagram
+    class SecurityReport {
+        +int accountId
+        +Incident[] incidents
+        +Alert[] alerts
+        +Zone[] zones
+        +Date rangeStart
+        +Date rangeEnd
+    }
+    class ReportService {
+        +getReportData(accountId) SecurityReport
+    }
+    ReportService ..> SecurityReport
+```
 ##### 2.6.5.6.2. Bounded Context Database Design Diagram
+Este contexto no posee tablas propias; consulta en modo lectura las tablas `INCIDENTS`, `ALERTS` y `ZONES` de los demás Bounded Contexts.
 
 ### 2.6.6. Bounded Context: Payment Management
 
 #### 2.6.6.1. Domain Layer
+| Clase | Tipo DDD | Propósito |
+| :--- | :--- | :--- |
+| `Plan` | Aggregate Root | Plan comercial con `Price`, `MaxZones`, `MaxSensors`, `Features` e `IsActive`. Planes vigentes: Basic (S/ 30), Professional (S/ 70), Corporate (S/ 100). |
+| `Subscription` | Entity | Vínculo entre `Account` y `Plan`, con `Status`, `StartDate` y `RenewalDate`. |
+| `PlanLimitValidationResult` | Value Object | Resultado de la validación de límites (`Success()` / `Fail(string)`). |
 
 #### 2.6.6.2. Interface Layer
+| Controller | Endpoint | Acción |
+| :--- | :--- | :--- |
+| `PlansController` | `GET /api/v1/plans` | Catálogo de planes |
+| `SubscriptionsController` | `GET /api/v1/subscriptions/current/{accountId}` | Suscripción vigente |
+| `SubscriptionsController` | `PATCH /api/v1/subscriptions/current/{accountId}/change-plan` | Cambio de plan |
+
+Cliente: `SubscriptionPage` (`/app/subscription`), en `src/payment-management/subscriptions/`.
 
 #### 2.6.6.3. Application Layer
+- `PlanService` — `GetAllAsync()`, `GetCurrentSubscriptionAsync(int)`.
+- `PlanLimitService` — `CanCreateZoneAsync(int)`, `CanCreateSensorAsync(int)`: **domain service** que hace cumplir los límites del plan sobre el contexto Kitchen Monitoring.
 
 #### 2.6.6.4. Infrastructure Layer
+- `AppDbContext` con `DbSet<Plan>` y `DbSet<Subscription>`; `Subscription → Plan` con `DeleteBehavior.Restrict` (no se elimina un plan con suscripciones activas).
+- `DatabaseSeeder` precarga los tres planes comerciales.
 
 #### 2.6.6.5. Bounded Context Software Architecture Component Level Diagrams
+```mermaid
+flowchart LR
+    subgraph PAY["Container: SmartGas.Api — Bounded Context Payment Management"]
+        PC["PlansController"]
+        SC["SubscriptionsController"]
+        PS["PlanService"]
+        PL["PlanLimitService"]
+        CTX["AppDbContext"]
+    end
+    KM["Kitchen Monitoring<br/>(ZoneService / SensorService)"]
+    DB[("PostgreSQL")]
+
+    PC --> PS
+    SC --> PS
+    KM -->|"valida límites"| PL
+    PS --> CTX
+    PL --> CTX
+    CTX --> DB
+```
 
 #### 2.6.6.6. Bounded Context Software Architecture Code Level Diagrams
-
 ##### 2.6.6.6.1. Bounded Context Domain Layer Class Diagrams
-
+```mermaid
+classDiagram
+    class Plan {
+        +int Id
+        +string Name
+        +decimal Price
+        +int MaxZones
+        +int MaxSensors
+        +string Features
+        +bool IsActive
+    }
+    class Subscription {
+        +int Id
+        +int AccountId
+        +int PlanId
+        +string Status
+        +DateTime StartDate
+        +DateTime RenewalDate
+    }
+    class PlanLimitValidationResult {
+        +bool IsAllowed
+        +string ErrorMessage
+        +Success() PlanLimitValidationResult
+        +Fail(string) PlanLimitValidationResult
+    }
+    Plan "1" --> "*" Subscription
+```
 ##### 2.6.6.6.2. Bounded Context Database Design Diagram
+```mermaid
+erDiagram
+    PLANS ||--o{ SUBSCRIPTIONS : offers
+    PLANS {
+        int Id PK
+        string Name
+        decimal Price
+        int MaxZones
+        int MaxSensors
+        string Features
+        bool IsActive
+    }
+    SUBSCRIPTIONS {
+        int Id PK
+        int AccountId FK
+        int PlanId FK
+        string Status
+        timestamp StartDate
+        timestamp RenewalDate
+    }
+```
 
 ### 2.6.7. Bounded Context: Dashboard / Shared
 
 #### 2.6.7.1. Domain Layer
+Este contexto no posee entidades persistentes propias: opera como **read model** sobre los demás contexts y como capa de integración con servicios de terceros. Sus objetos de dominio son `DashboardSummaryResponse` (backend) / `dashboard-summary.entity.js` (cliente) y `ExternalWeatherResponse`.
 
 #### 2.6.7.2. Interface Layer
+| Controller | Endpoint | Acción |
+| :--- | :--- | :--- |
+| `DashboardController` | `GET /api/v1/dashboard/summary/{accountId}` | Resumen agregado del estado de seguridad |
+| `ExternalWeatherController` | `GET /api/v1/external/weather/current` | Condiciones ambientales actuales |
+
+Cliente: `DashboardPage` (`/app/dashboard`), además de los componentes compartidos `layout.component`, `toolbar-content.component`, `user-menu.component` y `language-switcher.component` (este último sustenta el requisito de internacionalización mediante `vue-i18n`).
 
 #### 2.6.7.3. Application Layer
+- `DashboardService` — `GetSummaryAsync(int)`: agrega datos de zonas, sensores, incidentes y notificaciones.
+- `ExternalWeatherService` — `GetCurrentWeatherAsync(decimal latitude, decimal longitude)`: consume la API pública **Open-Meteo** y traduce la respuesta al DTO propio (Anti-Corruption Layer). En el cliente, `ExternalWeatherService.getCurrentWeather()` usa por defecto las coordenadas de Lima (-12.0464, -77.0428).
 
 #### 2.6.7.4. Infrastructure Layer
+- `HttpClient` inyectado mediante `AddHttpClient<ExternalWeatherService>()`, con `User-Agent` propio y parseo mediante `JsonDocument`.
+- Endpoint consumido: `https://api.open-meteo.com/v1/forecast` con los parámetros `temperature_2m`, `relative_humidity_2m` y `wind_speed_10m`.
 
 #### 2.6.7.5. Bounded Context Software Architecture Component Level Diagrams
+```mermaid
+flowchart LR
+    subgraph DASH["Container: SmartGas.Api — Bounded Context Dashboard / Shared"]
+        DC["DashboardController"]
+        WC["ExternalWeatherController"]
+        DS["DashboardService"]
+        WS["ExternalWeatherService<br/><i>(Anti-Corruption Layer)</i>"]
+        CTX["AppDbContext"]
+    end
+    EXT(["Open-Meteo API"])
+    DB[("PostgreSQL")]
+
+    DC --> DS
+    WC --> WS
+    DS --> CTX
+    WS -->|"HTTPS + JsonDocument"| EXT
+    CTX --> DB
+```
 
 #### 2.6.7.6. Bounded Context Software Architecture Code Level Diagrams
-
 ##### 2.6.7.6.1. Bounded Context Domain Layer Class Diagrams
-
+```mermaid
+classDiagram
+    class DashboardSummaryResponse {
+        +int AccountId
+        +int TotalZones
+        +int TotalSensors
+        +int ActiveIncidents
+        +int UnreadNotifications
+        +string OverallStatus
+    }
+    class ExternalWeatherResponse {
+        +decimal Latitude
+        +decimal Longitude
+        +string Timezone
+        +decimal Temperature
+        +decimal RelativeHumidity
+        +decimal WindSpeed
+    }
+    class DashboardService {
+        +GetSummaryAsync(int) DashboardSummaryResponse
+    }
+    class ExternalWeatherService {
+        +GetCurrentWeatherAsync(decimal, decimal) ExternalWeatherResponse
+    }
+    DashboardService ..> DashboardSummaryResponse
+    ExternalWeatherService ..> ExternalWeatherResponse
+```
 ##### 2.6.7.6.2. Bounded Context Database Design Diagram
+Este contexto no posee tablas propias; consulta en modo lectura las tablas `ZONES`, `SENSORS`, `INCIDENTS` y `NOTIFICATIONS` de los demás Bounded Contexts.
+
+**Diagrama de base de datos consolidado (PostgreSQL):**
+
+```mermaid
+erDiagram
+    ACCOUNTS ||--o| PROFILES : has
+    ACCOUNTS ||--o| SETTINGS : has
+    ACCOUNTS ||--o| EMERGENCY_CONTACTS : has
+    ACCOUNTS ||--o{ SUBSCRIPTIONS : owns
+    ACCOUNTS ||--o{ ZONES : owns
+    ACCOUNTS ||--o{ SENSORS : owns
+    ACCOUNTS ||--o{ INCIDENTS : owns
+    ACCOUNTS ||--o{ NOTIFICATIONS : receives
+    PLANS ||--o{ SUBSCRIPTIONS : offers
+    ZONES ||--o{ SENSORS : contains
+    ZONES ||--o{ SENSOR_READINGS : registers
+    SENSORS ||--o{ SENSOR_READINGS : produces
+    SENSORS ||--o{ INCIDENTS : triggers
+    ZONES ||--o{ INCIDENTS : locates
+    SENSOR_READINGS ||--o| INCIDENTS : originates
+    INCIDENTS ||--o{ ALERTS : raises
+    INCIDENTS ||--o{ NOTIFICATIONS : notifies
+    ALERTS ||--o{ NOTIFICATIONS : delivers
+```
+
+
+
 
