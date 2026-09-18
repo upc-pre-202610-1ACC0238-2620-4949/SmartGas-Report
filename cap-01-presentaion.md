@@ -7,13 +7,13 @@ Somos **FireSecure**, una startup tecnológica orientada a la ingeniería de sof
 Nuestra misión es disminuir el riesgo de desastres por fugas de gas e incendios mediante un producto de software móvil accesible, intuitivo y optimizado para interacciones táctiles. Aspiramos a convertirnos en el ecosistema digital líder en gestión de emergencias, brindando tranquilidad a nuestros usuarios al permitirles visualizar el estado de sus entornos y recibir notificaciones push críticas de manera inmediata directamente en sus smartphones y tablets.
 
 ### 1.1.2. Perfiles de integrantes del equipo
-| Foto | Nombre                                      | Descripción |
-| --- |---------------------------------------------| --- |
-|   | Gabriel Ferran Espinar Martínez (U202310436) | Estudiante de ingenieria de Software. Soy estudiante de la carrera de Ingeniería de Software, Me considero una persona trabajadora. Me interesa aprender constantemente en especial en áreas relacionadas a la tecnología y cuento con conocimientos en HTML, CSS, Javascript y SQL, lo cual puede servir en el desarrollo del proyecto.  |
-|  | Vivar Cesar, David Ignacio (U202414424)     |   |
-|   | Rioja Nuñez, Franco Diego (U202221597 )     | 
-|   | Huaman Olivos, Yeira Shari (U202210513)     |   |
-|   | Guevara Serrano, Diego Ismael (U202318951)  |   |
+| Foto | Nombre | Descripción |
+|------| --- | -- |
+| <img src="./assets/_Gabriel.png" width="150"> | Gabriel Ferran Espinar Martínez (U202310436)| Estudiante de ingenieria de Software. Soy estudiante de la carrera de Ingeniería de Software, Me considero una persona trabajadora. Me interesa aprender constantemente en especial en áreas relacionadas a la tecnología y cuento con conocimientos en HTML, CSS, Javascript y SQL, lo cual puede servir en el desarrollo del proyecto. |
+|      | Vivar Cesar, David Ignacio (U202414424) |  |
+|| Rioja Nuñez, Franco Diego (U202221597 )  | 
+| <img src="./assets/yeira.jpeg" width="150"> | Huaman Olivos, Yeira Shari (U202210513) |  Estudiante de Ingeniería de Software, responsable y comprometida, con interés en seguir desarrollando mis habilidades y aportar de manera activa al trabajo en equipo y al desarrollo del proyecto. |
+|    <img src="./assets/deigo.png" width="150">    |Guevara Serrano, Diego Ismael (U202318951) |  Estudiante de Ingeniería de Software, responsable y con interés en seguir aprendiendo mas del curso y aportar con lo que sea necesario al equipo.|
 
 ## 1.2. Solution Profile
 ### 1.2.1 Antecedentes y problemática
