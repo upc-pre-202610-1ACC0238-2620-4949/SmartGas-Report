@@ -339,40 +339,56 @@ En esta sección se presentan las épicas y user stories identificadas para Smar
 
 | Story ID | User | Priority | Epic | Title | Description | Acceptance Criteria |
 |---|---|---|---|---|---|---|
-| US01 | Usuario | Alta | EP01 | Registrarse en la app | Como usuario, quiero crear una cuenta en SmartGas para acceder al monitoreo de seguridad de mi hogar o restaurante. | Given que el usuario ingresa datos válidos, When confirma el registro, Then el sistema crea la cuenta correctamente. |
-| US02 | Usuario | Alta | EP01 | Iniciar sesión | Como usuario, quiero iniciar sesión desde mi celular para acceder a mis sensores y alertas. | Given que el usuario tiene una cuenta registrada, When ingresa credenciales válidas, Then el sistema permite el acceso. |
-| US03 | Usuario | Media | EP01 | Gestionar perfil | Como usuario, quiero editar mis datos personales para mantener mi información actualizada. | Given que el usuario está autenticado, When modifica su información, Then el sistema guarda los cambios. |
-| US04 | Usuario | Baja | EP01 | Cerrar sesión | Como usuario, quiero cerrar sesión para proteger mi cuenta en el dispositivo. | Given que el usuario está autenticado, When selecciona cerrar sesión, Then el sistema finaliza la sesión. |
-| US05 | Usuario | Alta | EP02 | Registrar sensor | Como usuario, quiero registrar un sensor IoT para empezar a monitorear una zona. | Given que el usuario ingresa los datos del sensor, When confirma el registro, Then el sistema guarda el sensor. |
-| US06 | Usuario | Alta | EP02 | Asociar sensor a zona | Como usuario, quiero asociar un sensor a una cocina, ambiente o local para identificar dónde ocurre un riesgo. | Given que existe un sensor registrado, When el usuario selecciona una zona, Then el sistema vincula el sensor con esa zona. |
-| US07 | Usuario | Media | EP02 | Configurar sensor | Como usuario, quiero configurar parámetros del sensor para adaptarlo a mi entorno. | Given que el sensor está registrado, When el usuario actualiza sus parámetros, Then el sistema guarda la configuración. |
-| US08 | Usuario | Media | EP02 | Ver sensores registrados | Como usuario, quiero ver mis sensores registrados para conocer su estado actual. | Given que el usuario accede al módulo de sensores, When la app carga la información, Then se muestra la lista de sensores. |
-| US09 | Usuario | Alta | EP03 | Ver estado en tiempo real | Como usuario, quiero ver desde mi celular los niveles de gas y temperatura para saber si mi entorno es seguro. | Given que existen lecturas de sensores, When el usuario abre el dashboard, Then la app muestra los valores actualizados. |
-| US10 | Usuario | Alta | EP03 | Actualizar datos automáticamente | Como usuario, quiero que los datos se actualicen automáticamente para no revisar manualmente el estado de seguridad. | Given que los sensores envían nuevas lecturas, When la app recibe los datos, Then actualiza la información mostrada. |
-| US11 | Usuario | Alta | EP03 | Ver estado general de seguridad | Como usuario, quiero ver un indicador general de seguridad para entender rápidamente si existe riesgo. | Given que existen datos de monitoreo, When el usuario entra al inicio, Then la app muestra un estado como seguro, alerta o peligro. |
-| US12 | Usuario | Alta | EP04 | Detectar fuga de gas | Como usuario, quiero que el sistema detecte niveles peligrosos de gas para prevenir accidentes. | Given que una lectura supera el límite seguro, When el sistema la procesa, Then registra una anomalía de gas. |
-| US13 | Usuario | Alta | EP04 | Detectar temperatura anómala | Como usuario, quiero que el sistema detecte temperaturas peligrosas para prevenir incendios. | Given que una lectura supera el rango permitido, When el sistema la evalúa, Then registra una anomalía de temperatura. |
-| US14 | Sistema | Alta | EP04 | Generar evento de anomalía | Como sistema, quiero registrar cada anomalía detectada para mantener trazabilidad del incidente. | Given que se detecta una anomalía, When se confirma el evento, Then el sistema lo almacena con fecha, hora y zona. |
-| US15 | Usuario | Alta | EP05 | Recibir notificación push | Como usuario, quiero recibir una notificación push en mi celular cuando exista una alerta para actuar rápidamente. | Given que se genera una alerta, When el usuario tiene notificaciones activas, Then la app envía una notificación al dispositivo. |
-| US16 | Usuario | Alta | EP05 | Visualizar alertas activas | Como usuario, quiero ver las alertas activas para conocer los riesgos actuales. | Given que existen alertas activas, When el usuario entra al módulo de alertas, Then la app muestra su estado y nivel de riesgo. |
-| US17 | Usuario | Media | EP05 | Confirmar alerta recibida | Como usuario, quiero confirmar que recibí una alerta para dejar evidencia de atención. | Given que el usuario recibe una alerta, When confirma la recepción, Then el sistema registra la confirmación. |
-| US18 | Usuario | Media | EP05 | Marcar alerta como atendida | Como usuario, quiero marcar una alerta como atendida para controlar las incidencias resueltas. | Given que existe una alerta activa, When el usuario la marca como atendida, Then el sistema cambia su estado. |
-| US19 | Usuario | Media | EP06 | Consultar historial | Como usuario, quiero revisar eventos anteriores para conocer incidentes pasados. | Given que existen eventos registrados, When el usuario abre el historial, Then la app muestra los incidentes ordenados por fecha. |
-| US20 | Usuario | Media | EP06 | Filtrar historial por fecha | Como usuario, quiero filtrar incidentes por fecha para analizar periodos específicos. | Given que existen varios eventos, When el usuario selecciona un rango de fechas, Then la app muestra los eventos correspondientes. |
-| US21 | Usuario | Media | EP06 | Generar reporte de seguridad | Como usuario, quiero generar un reporte para evaluar el estado de seguridad de mi hogar o restaurante. | Given que existen datos históricos, When el usuario solicita un reporte, Then el sistema genera un resumen de eventos. |
-| US22 | Usuario | Alta | EP07 | Configurar límites de seguridad | Como usuario, quiero definir límites de gas y temperatura para personalizar las alertas. | Given que el usuario accede a configuración, When guarda nuevos límites, Then el sistema los aplica en el monitoreo. |
-| US23 | Usuario | Media | EP07 | Configurar contactos de emergencia | Como usuario, quiero registrar contactos de emergencia para avisarles ante una situación crítica. | Given que el usuario ingresa un contacto válido, When confirma el registro, Then el sistema guarda el contacto. |
-| US24 | Usuario | Media | EP07 | Configurar preferencias de notificación | Como usuario, quiero elegir cómo recibir alertas para adaptarlas a mi disponibilidad. | Given que el usuario accede a preferencias, When selecciona canales de notificación, Then el sistema guarda la configuración. |
-| US25 | Usuario | Alta | EP08 | Guardar datos locales | Como usuario, quiero que la app conserve información básica en el dispositivo para consultar datos recientes sin conexión. | Given que la app obtiene datos recientes, When no hay conexión, Then muestra la última información almacenada localmente. |
-| US26 | Usuario | Alta | EP08 | Usar notificaciones del dispositivo | Como usuario, quiero que SmartGas use las notificaciones del celular para advertirme ante emergencias. | Given que existe una alerta crítica, When la app procesa la alerta, Then utiliza el sistema de notificaciones del dispositivo. |
-| US27 | Usuario | Media | EP08 | Usar cámara para registrar sensor | Como usuario, quiero usar la cámara del celular para escanear el código de un sensor y registrarlo más rápido. | Given que el usuario abre el registro de sensor, When escanea un código válido, Then la app carga los datos del sensor. |
-| TS01 | Developer | Alta | EP09 | API de autenticación | Como developer, quiero endpoints de registro e inicio de sesión para autenticar usuarios desde la app móvil. | Given que la app envía credenciales válidas, When consume el endpoint de autenticación, Then la API responde con una sesión válida. |
-| TS02 | Developer | Alta | EP09 | API de sensores | Como developer, quiero endpoints para registrar, consultar y actualizar sensores IoT desde la app móvil. | Given que la app envía datos válidos de sensor, When consume la API, Then el backend registra o devuelve la información solicitada. |
-| TS03 | Developer | Alta | EP09 | API de telemetría | Como developer, quiero endpoints para recibir lecturas de gas y temperatura para procesar datos en tiempo real. | Given que un sensor envía una lectura, When la API recibe los datos, Then los almacena y evalúa su nivel de riesgo. |
-| TS04 | Developer | Alta | EP09 | API de alertas | Como developer, quiero endpoints de alertas para consultar, confirmar y atender incidentes desde la app. | Given que existe una alerta, When la app consulta el endpoint, Then la API devuelve el estado actualizado. |
-| TS05 | Developer | Media | EP09 | Integración con servicio externo | Como developer, quiero integrar un servicio externo para complementar la información de seguridad o notificación. | Given que la app solicita información externa, When el servicio responde correctamente, Then el sistema muestra o usa los datos recibidos. |
-| SP01 | Equipo | Alta | EP09 | Investigar tecnología móvil nueva | Como equipo, queremos investigar una tecnología, SDK o librería móvil no vista en clase para justificar su integración en SmartGas. | Given que se evalúan alternativas, When se selecciona una tecnología, Then se documenta su propósito, prueba de viabilidad y conclusión técnica. |
+| US01 | Usuario | Alta | EP01 | Registrarse en la app | Como usuario, quiero crear una cuenta en SmartGas para acceder al monitoreo de seguridad de mi hogar o restaurante. | **Scenario:** Registrarse en la app<br>**Given** que el usuario ingresa datos válidos<br>**When** confirma el registro<br>**Then** el sistema crea la cuenta correctamente. |
+| US02 | Usuario | Alta | EP01 | Iniciar sesión | Como usuario, quiero iniciar sesión desde mi celular para acceder a mis sensores y alertas. | **Scenario:** Iniciar sesión<br>**Given** que el usuario tiene una cuenta registrada<br>**When** ingresa credenciales válidas<br>**Then** el sistema permite el acceso. |
+| US03 | Usuario | Media | EP01 | Gestionar perfil | Como usuario, quiero editar mis datos personales para mantener mi información actualizada. | **Scenario:** Gestionar perfil<br>**Given** que el usuario está autenticado<br>**When** modifica su información<br>**Then** el sistema guarda los cambios. |
+| US04 | Usuario | Baja | EP01 | Cerrar sesión | Como usuario, quiero cerrar sesión para proteger mi cuenta en el dispositivo. | **Scenario:** Cerrar sesión<br>**Given** que el usuario está autenticado<br>**When** selecciona cerrar sesión<br>**Then** el sistema finaliza la sesión. |
+| US05 | Usuario | Alta | EP02 | Registrar sensor | Como usuario, quiero registrar un sensor IoT para empezar a monitorear una zona. | **Scenario:** Registrar sensor<br>**Given** que el usuario ingresa los datos del sensor<br>**When** confirma el registro<br>**Then** el sistema guarda el sensor. |
+| US06 | Usuario | Alta | EP02 | Asociar sensor a zona | Como usuario, quiero asociar un sensor a una cocina, ambiente o local para identificar dónde ocurre un riesgo. | **Scenario:** Asociar sensor a zona<br>**Given** que existe un sensor registrado<br>**When** el usuario selecciona una zona<br>**Then** el sistema vincula el sensor con esa zona. |
+| US07 | Usuario | Media | EP02 | Configurar sensor | Como usuario, quiero configurar parámetros del sensor para adaptarlo a mi entorno. | **Scenario:** Configurar sensor<br>**Given** que el sensor está registrado<br>**When** el usuario actualiza sus parámetros<br>**Then** el sistema guarda la configuración. |
+| US08 | Usuario | Media | EP02 | Ver sensores registrados | Como usuario, quiero ver mis sensores registrados para conocer su estado actual. | **Scenario:** Ver sensores registrados<br>**Given** que el usuario accede al módulo de sensores<br>**When** la app carga la información<br>**Then** se muestra la lista de sensores. |
+| US09 | Usuario | Alta | EP03 | Ver estado en tiempo real | Como usuario, quiero ver desde mi celular los niveles de gas y temperatura para saber si mi entorno es seguro. | **Scenario:** Ver estado en tiempo real<br>**Given** que existen lecturas de sensores<br>**When** el usuario abre el dashboard<br>**Then** la app muestra los valores actualizados. |
+| US10 | Usuario | Alta | EP03 | Actualizar datos automáticamente | Como usuario, quiero que los datos se actualicen automáticamente para no revisar manualmente el estado de seguridad. | **Scenario:** Actualizar datos automáticamente<br>**Given** que los sensores envían nuevas lecturas<br>**When** la app recibe los datos<br>**Then** actualiza la información mostrada. |
+| US11 | Usuario | Alta | EP03 | Ver estado general de seguridad | Como usuario, quiero ver un indicador general de seguridad para entender rápidamente si existe riesgo. | **Scenario:** Ver estado general de seguridad<br>**Given** que existen datos de monitoreo<br>**When** el usuario entra al inicio<br>**Then** la app muestra un estado como seguro, alerta o peligro. |
+| US12 | Usuario | Alta | EP04 | Detectar fuga de gas | Como usuario, quiero que el sistema detecte niveles peligrosos de gas para prevenir accidentes. | **Scenario:** Detectar fuga de gas<br>**Given** que una lectura supera el límite seguro<br>**When** el sistema la procesa<br>**Then** registra una anomalía de gas. |
+| US13 | Usuario | Alta | EP04 | Detectar temperatura anómala | Como usuario, quiero que el sistema detecte temperaturas peligrosas para prevenir incendios. | **Scenario:** Detectar temperatura anómala<br>**Given** que una lectura supera el rango permitido<br>**When** el sistema la evalúa<br>**Then** registra una anomalía de temperatura. |
+| US14 | Sistema | Alta | EP04 | Generar evento de anomalía | Como sistema, quiero registrar cada anomalía detectada para mantener trazabilidad del incidente. | **Scenario:** Generar evento de anomalía<br>**Given** que se detecta una anomalía<br>**When** se confirma el evento<br>**Then** el sistema lo almacena con fecha, hora y zona. |
+| US15 | Usuario | Alta | EP05 | Recibir notificación push | Como usuario, quiero recibir una notificación push en mi celular cuando exista una alerta para actuar rápidamente. | **Scenario:** Recibir notificación push<br>**Given** que se genera una alerta<br>**When** el usuario tiene notificaciones activas<br>**Then** la app envía una notificación al dispositivo. |
+| US16 | Usuario | Alta | EP05 | Visualizar alertas activas | Como usuario, quiero ver las alertas activas para conocer los riesgos actuales. | **Scenario:** Visualizar alertas activas<br>**Given** que existen alertas activas<br>**When** el usuario entra al módulo de alertas<br>**Then** la app muestra su estado y nivel de riesgo. |
+| US17 | Usuario | Media | EP05 | Confirmar alerta recibida | Como usuario, quiero confirmar que recibí una alerta para dejar evidencia de atención. | **Scenario:** Confirmar alerta recibida<br>**Given** que el usuario recibe una alerta<br>**When** confirma la recepción<br>**Then** el sistema registra la confirmación. |
+| US18 | Usuario | Media | EP05 | Marcar alerta como atendida | Como usuario, quiero marcar una alerta como atendida para controlar las incidencias resueltas. | **Scenario:** Marcar alerta como atendida<br>**Given** que existe una alerta activa<br>**When** el usuario la marca como atendida<br>**Then** el sistema cambia su estado. |
+| US19 | Usuario | Media | EP06 | Consultar historial | Como usuario, quiero revisar eventos anteriores para conocer incidentes pasados. | **Scenario:** Consultar historial<br>**Given** que existen eventos registrados<br>**When** el usuario abre el historial<br>**Then** la app muestra los incidentes ordenados por fecha. |
+| US20 | Usuario | Media | EP06 | Filtrar historial por fecha | Como usuario, quiero filtrar incidentes por fecha para analizar periodos específicos. | **Scenario:** Filtrar historial por fecha<br>**Given** que existen varios eventos<br>**When** el usuario selecciona un rango de fechas<br>**Then** la app muestra los eventos correspondientes. |
+| US21 | Usuario | Media | EP06 | Generar reporte de seguridad | Como usuario, quiero generar un reporte para evaluar el estado de seguridad de mi hogar o restaurante. | **Scenario:** Generar reporte de seguridad<br>**Given** que existen datos históricos<br>**When** el usuario solicita un reporte<br>**Then** el sistema genera un resumen de eventos. |
+| US22 | Usuario | Alta | EP07 | Configurar límites de seguridad | Como usuario, quiero definir límites de gas y temperatura para personalizar las alertas. | **Scenario:** Configurar límites de seguridad<br>**Given** que el usuario accede a configuración<br>**When** guarda nuevos límites<br>**Then** el sistema los aplica en el monitoreo. |
+| US23 | Usuario | Media | EP07 | Configurar contactos de emergencia | Como usuario, quiero registrar contactos de emergencia para avisarles ante una situación crítica. | **Scenario:** Configurar contactos de emergencia<br>**Given** que el usuario ingresa un contacto válido<br>**When** confirma el registro<br>**Then** el sistema guarda el contacto. |
+| US24 | Usuario | Media | EP07 | Configurar preferencias de notificación | Como usuario, quiero elegir cómo recibir alertas para adaptarlas a mi disponibilidad. | **Scenario:** Configurar preferencias de notificación<br>**Given** que el usuario accede a preferencias<br>**When** selecciona canales de notificación<br>**Then** el sistema guarda la configuración. |
+| US25 | Usuario | Alta | EP08 | Guardar datos locales | Como usuario, quiero que la app conserve información básica en el dispositivo para consultar datos recientes sin conexión. | **Scenario:** Guardar datos locales<br>**Given** que la app obtiene datos recientes<br>**When** no hay conexión<br>**Then** muestra la última información almacenada localmente. |
+| US26 | Usuario | Alta | EP08 | Usar notificaciones del dispositivo | Como usuario, quiero que SmartGas use las notificaciones del celular para advertirme ante emergencias. | **Scenario:** Usar notificaciones del dispositivo<br>**Given** que existe una alerta crítica<br>**When** la app procesa la alerta<br>**Then** utiliza el sistema de notificaciones del dispositivo. |
+| US27 | Usuario | Media | EP08 | Usar cámara para registrar sensor | Como usuario, quiero usar la cámara del celular para escanear el código de un sensor y registrarlo más rápido. | **Scenario:** Usar cámara para registrar sensor<br>**Given** que el usuario abre el registro de sensor<br>**When** escanea un código válido<br>**Then** la app carga los datos del sensor. |
+| TS01 | Developer | Alta | EP09 | API de autenticación | Como developer, quiero endpoints de registro e inicio de sesión para autenticar usuarios desde la app móvil. | **Scenario:** API de autenticación<br>**Given** que la app envía credenciales válidas<br>**When** consume el endpoint de autenticación<br>**Then** la API responde con una sesión válida. |
+| TS02 | Developer | Alta | EP09 | API de sensores | Como developer, quiero endpoints para registrar, consultar y actualizar sensores IoT desde la app móvil. | **Scenario:** API de sensores<br>**Given** que la app envía datos válidos de sensor<br>**When** consume la API<br>**Then** el backend registra o devuelve la información solicitada. |
+| TS03 | Developer | Alta | EP09 | API de telemetría | Como developer, quiero endpoints para recibir lecturas de gas y temperatura para procesar datos en tiempo real. | **Scenario:** API de telemetría<br>**Given** que un sensor envía una lectura<br>**When** la API recibe los datos<br>**Then** los almacena y evalúa su nivel de riesgo. |
+| TS04 | Developer | Alta | EP09 | API de alertas | Como developer, quiero endpoints de alertas para consultar, confirmar y atender incidentes desde la app. | **Scenario:** API de alertas<br>**Given** que existe una alerta<br>**When** la app consulta el endpoint<br>**Then** la API devuelve el estado actualizado. |
+| TS05 | Developer | Media | EP09 | Integración con servicio externo | Como developer, quiero integrar un servicio externo para complementar la información de seguridad o notificación. | **Scenario:** Integración con servicio externo<br>**Given** que la app solicita información externa<br>**When** el servicio responde correctamente<br>**Then** el sistema muestra o usa los datos recibidos. |
+| SP01 | Equipo | Alta | EP09 | Investigar tecnología móvil nueva | Como equipo, queremos investigar una tecnología, SDK o librería móvil no vista en clase para justificar su integración en SmartGas. | **Scenario:** Investigar tecnología móvil nueva<br>**Given** que se evalúan alternativas<br>**When** se selecciona una tecnología<br>**Then** se documenta su propósito, prueba de viabilidad y conclusión técnica. |
+| SP03 | Equipo | Alta | EP05 | Investigar Firebase Cloud Messaging vs OneSignal | Como equipo, queremos investigar Firebase Cloud Messaging y OneSignal para determinar cuál servicio se integra mejor con el backend y permite enviar alertas inmediatas al usuario. | **Scenario:** Selección del servicio de notificaciones push<br>**Given** que el equipo necesita elegir un servicio de notificaciones push<br>**When** compara Firebase Cloud Messaging y OneSignal mediante criterios de integración, costo y viabilidad técnica<br>**Then** documenta la decisión técnica y el siguiente paso para Incident Prevention & Notification. |
 
+#### Spike Story 
+
+| Elemento | Detalle |
+|---|---|
+| Story ID | SP03 |
+| Usuario | Equipo |
+| Prioridad | Alta |
+| Épica | EP05 - Alertas y notificaciones |
+| Título | Investigar Firebase Cloud Messaging vs OneSignal para el envío de notificaciones push. |
+| Objetivo | Determinar qué servicio se integra mejor con el backend y con el canal push definido para SmartGas, con el fin de enviar alertas inmediatas cuando se detecte una fuga de gas o una temperatura anómala. |
+| Alcance | Incluye la comparación de integración, costo, límites del plan gratuito, tiempo de entrega de la notificación y viabilidad técnica. Excluye SMS, email, diseño final de plantillas e implementación en producción. |
+| Timebox | 16 horas / 2 días. |
+| Entregables | Documento de hallazgos, comparación técnica, evidencia de prueba o PoC y recomendación técnica final. |
+| Criterios de aceptación | **Scenario:** Selección del proveedor push<br>**Given** que el equipo compara Firebase Cloud Messaging y OneSignal<br>**When** evalúa integración, costo, límites y viabilidad técnica<br>**Then** define qué servicio se usará y registra la evidencia de la decisión. |
+| Resultado al cerrar | Hallazgos documentados, decisión técnica registrada y próximas user stories impactadas: US15, US26 y TS04. |
 
 ### 2.4.2. Impact Mapping
 
@@ -396,34 +412,35 @@ En esta sección se presenta el Product Backlog de SmartGas, organizado según e
 | 3 | US12 | Detectar fuga de gas | 8 | Sprint 1 |
 | 4 | US13 | Detectar temperatura anómala | 8 | Sprint 1 |
 | 5 | US15 | Recibir notificación push | 8 | Sprint 1 |
-| 6 | US11 | Ver estado general de seguridad | 5 | Sprint 1 |
-| 7 | US16 | Visualizar alertas activas | 5 | Sprint 1 |
-| 8 | US05 | Registrar sensor | 5 | Sprint 1 |
-| 9 | US06 | Asociar sensor a zona | 5 | Sprint 1 |
-| 10 | US14 | Generar evento de anomalía | 5 | Sprint 2 |
-| 11 | US17 | Confirmar alerta recibida | 3 | Sprint 2 |
-| 12 | US18 | Marcar alerta como atendida | 3 | Sprint 2 |
-| 13 | US19 | Consultar historial | 5 | Sprint 2 |
-| 14 | US20 | Filtrar historial por fecha | 3 | Sprint 2 |
-| 15 | US21 | Generar reporte de seguridad | 5 | Sprint 2 |
-| 16 | US22 | Configurar límites de seguridad | 5 | Sprint 2 |
-| 17 | US23 | Configurar contactos de emergencia | 3 | Sprint 2 |
-| 18 | US24 | Configurar preferencias de notificación | 3 | Sprint 2 |
-| 19 | US25 | Guardar datos locales | 5 | Sprint 2 |
-| 20 | US26 | Usar notificaciones del dispositivo | 5 | Sprint 2 |
-| 21 | US27 | Usar cámara para registrar sensor | 5 | Sprint 3 |
-| 22 | US08 | Ver sensores registrados | 3 | Sprint 3 |
-| 23 | US07 | Configurar sensor | 5 | Sprint 3 |
-| 24 | US01 | Registrarse en la app | 5 | Sprint 3 |
-| 25 | US02 | Iniciar sesión | 5 | Sprint 3 |
-| 26 | US03 | Gestionar perfil | 3 | Sprint 3 |
-| 27 | US04 | Cerrar sesión | 1 | Sprint 3 |
-| 28 | TS01 | API de autenticación | 5 | Sprint 1 |
-| 29 | TS02 | API de sensores | 8 | Sprint 1 |
-| 30 | TS03 | API de telemetría | 8 | Sprint 1 |
-| 31 | TS04 | API de alertas | 5 | Sprint 2 |
-| 32 | TS05 | Integración con servicio externo | 5 | Sprint 2 |
-| 33 | SP01 | Investigar tecnología móvil nueva | 3 | Sprint 1 |
+| 6 | SP03 | Investigar Firebase Cloud Messaging vs OneSignal | 3 | Sprint 1 |
+| 7 | US11 | Ver estado general de seguridad | 5 | Sprint 1 |
+| 8 | US16 | Visualizar alertas activas | 5 | Sprint 1 |
+| 9 | US05 | Registrar sensor | 5 | Sprint 1 |
+| 10 | US06 | Asociar sensor a zona | 5 | Sprint 1 |
+| 11 | US14 | Generar evento de anomalía | 5 | Sprint 2 |
+| 12 | US17 | Confirmar alerta recibida | 3 | Sprint 2 |
+| 13 | US18 | Marcar alerta como atendida | 3 | Sprint 2 |
+| 14 | US19 | Consultar historial | 5 | Sprint 2 |
+| 15 | US20 | Filtrar historial por fecha | 3 | Sprint 2 |
+| 16 | US21 | Generar reporte de seguridad | 5 | Sprint 2 |
+| 17 | US22 | Configurar límites de seguridad | 5 | Sprint 2 |
+| 18 | US23 | Configurar contactos de emergencia | 3 | Sprint 2 |
+| 19 | US24 | Configurar preferencias de notificación | 3 | Sprint 2 |
+| 20 | US25 | Guardar datos locales | 5 | Sprint 2 |
+| 21 | US26 | Usar notificaciones del dispositivo | 5 | Sprint 2 |
+| 22 | US27 | Usar cámara para registrar sensor | 5 | Sprint 3 |
+| 23 | US08 | Ver sensores registrados | 3 | Sprint 3 |
+| 24 | US07 | Configurar sensor | 5 | Sprint 3 |
+| 25 | US01 | Registrarse en la app | 5 | Sprint 3 |
+| 26 | US02 | Iniciar sesión | 5 | Sprint 3 |
+| 27 | US03 | Gestionar perfil | 3 | Sprint 3 |
+| 28 | US04 | Cerrar sesión | 1 | Sprint 3 |
+| 29 | TS01 | API de autenticación | 5 | Sprint 1 |
+| 30 | TS02 | API de sensores | 8 | Sprint 1 |
+| 31 | TS03 | API de telemetría | 8 | Sprint 1 |
+| 32 | TS04 | API de alertas | 5 | Sprint 2 |
+| 33 | TS05 | Integración con servicio externo | 5 | Sprint 2 |
+| 34 | SP01 | Investigar tecnología móvil nueva | 3 | Sprint 1 |
 
 
 ## 2.5. Strategic-Level Domain-Driven Design
@@ -672,4 +689,5 @@ El diagrama de despliegue representa la distribución física de SmartGas. La ap
 ##### 2.6.7.6.1. Bounded Context Domain Layer Class Diagrams
 
 ##### 2.6.7.6.2. Bounded Context Database Design Diagram
+
 
