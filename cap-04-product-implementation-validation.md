@@ -481,14 +481,16 @@ Las entrevistas de validación se realizarán con la versión de la app distribu
 
 **Elementos a evaluar y tareas**
 
-| Producto | Tarea | User flow asociado | Segmento |
-|:--|:--|:--|:--|
-| Landing Page | Encontrar el precio del plan Professional y descargar la app. | — | Ambos |
-| App | Iniciar sesión y decir en voz alta el estado de la cocina. | User Flow 1 | Ambos |
-| App | Responder a una alerta crítica simulada y llamar al contacto de emergencia. | User Flow 2 | Ambos |
-| App | Registrar un nuevo sensor escaneando su QR. | User Flow 3 | Restaurantes |
-| App | Encontrar los incidentes de la última semana y resolver uno. | User Flow 4 | Restaurantes |
-| App | Cambiar el umbral de gas y el idioma a español. | User Flow 5 | Hogares |
+Todas las tareas se aplican a ambos segmentos (familias y restaurantes).
+
+| Producto | Tarea | User flow asociado |
+|:--|:--|:--|
+| Landing Page | Encontrar el precio del plan Professional y descargar la app. | — |
+| App | Iniciar sesión y decir en voz alta el estado de la cocina. | User Flow 1 |
+| App | Responder a una alerta crítica simulada y llamar al contacto de emergencia. | User Flow 2 |
+| App | Registrar un nuevo sensor escaneando su QR. | User Flow 3 |
+| App | Encontrar los incidentes de la última semana y resolver uno. | User Flow 4 |
+| App | Cambiar el umbral de gas y el idioma a español. | User Flow 5 |
 
 **Preguntas después de las tareas**
 
