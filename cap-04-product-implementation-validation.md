@@ -593,3 +593,161 @@ Recomendación: mostrar los filtros aplicados como chips seleccionados con la op
 
 Los cinco problemas se registraron como tareas en el Sprint Backlog 2.
 
+
+# Conclusiones
+
+## Conclusiones y recomendaciones
+
+### Conclusiones
+
+1. **Sobre el Problem Statement.** Las entrevistas confirmaron el problema planteado: el 100 % de las familias y de los restaurantes entrevistados supervisa su cocina de forma manual y no tiene forma de saber qué ocurre cuando no está presente. La reformulación del Problem Statement con la plantilla *Brand new initiative*, en un único enunciado para ambos segmentos, permitió fijar métricas de éxito observables, como confirmar el 80 % de las alertas críticas en menos de 2 minutos.
+2. **Sobre las assumptions.** Se confirmaron, con la evidencia disponible, las suposiciones de usuario: el celular es el canal principal (UA1) y la alerta inmediata es la necesidad más valorada (67 % en hogares y 100 % en restaurantes). Las suposiciones de negocio, en particular la disposición a pagar una suscripción (BA1) y la migración entre planes (BOA2), aún no se validan y se medirán en las entrevistas de validación.
+3. **Sobre las hipótesis.** Las hipótesis H1 (dashboard) y H2 (alertas push con guía) guiaron la priorización del Product Backlog: las historias que las sustentan ocupan los primeros lugares y se implementan en los Sprints 1 y 2. Su validación cuantitativa se hará con la versión distribuida mediante Firebase App Distribution.
+4. **Sobre el diseño de la solución.** El enfoque Domain-Driven Design permitió reutilizar los web services de Aplicaciones Web, cuyos bounded contexts se ajustaron tras contrastarlos con el código: se incorporó Payment Management y las integraciones externas se modelaron como Anti-Corruption Layers. El C4 Model documenta ahora los cinco productos de la solución, incluidas las dos aplicaciones móviles.
+5. **Sobre la experiencia móvil.** Los wireflows, user flows y mock-ups muestran que los flujos críticos se completan en pocos pasos: la respuesta a una alerta requiere dos interacciones desde la notificación. La evaluación heurística interna identificó cinco problemas, el más grave relacionado con la prevención de errores al marcar una falsa alarma, que se corregirán en el Sprint 2.
+
+### Recomendaciones y próximos pasos (roadmap)
+
+- **Sprint 2 (AV2):** completar los web services (FCM, registro de dispositivos y planes), implementar las alertas push, el historial, los umbrales y el registro por QR en Android, corregir los hallazgos heurísticos y realizar las entrevistas de validación.
+- **Sprints 3 y 4 (TB2):** construir la app en Flutter con paridad funcional para iOS, el modo sin conexión con Drift, el reporte de seguridad y la gestión de suscripciones; distribuir ambas apps con Firebase App Distribution.
+- **Después del curso:** evaluar la integración con actuadores (válvulas y extractores), SMS como canal de respaldo para el plan Corporate, el panel multi-local para cadenas de restaurantes y la autenticación con JWT y doble factor.
+
+## Video About-the-Team
+
+El video About-the-Team se presentará en su primera versión en el AV2 y en su versión final en el TB2. Incluirá la presentación de cada integrante ante cámara, escenas de las sesiones de trabajo del equipo (EventStorming, Sprint Planning y desarrollo de la app) con narración en voz en off, y el testimonio de cada integrante sobre las actividades realizadas y el desarrollo del Student Outcome.
+
+| Elemento | Detalle |
+|:--|:--|
+| Nomenclatura | `upc-pre-202620-1acc0238-4949-firesecure-about-the-team-av2.mp4` |
+| Duración estimada | 10 minutos (5 minutos de retrospectiva y 1 minuto por testimonio) |
+| Entrega | AV2 (primera versión) y TB2 (versión final) |
+
+## Video About-the-Product
+
+El video About-the-Product, de uno a dos minutos, presentará el problema, la propuesta de valor de SmartGas, escenas de la app en uso y al menos un testimonio de un usuario de las entrevistas de validación. Se publicará en el OneDrive del curso y en YouTube para incrustarlo en el landing page. Su primera versión se entregará en el AV2.
+
+## Video App Validation
+
+El video App Validation documentará las sesiones de prueba con usuarios de la versión distribuida mediante Firebase App Distribution y su evaluación según el formato de heurísticas del Anexo E. Se elaborará a partir del Sprint 2.
+
+# Glosario
+
+| Término | Definición |
+|:--|:--|
+| ACL (Anti-Corruption Layer) | Capa que traduce el modelo de un sistema externo al modelo propio para no contaminar el dominio. |
+| Aggregate Root | Entidad principal de un agregado de DDD; es el único punto de acceso para modificarlo. |
+| API (Application Programming Interface) | Conjunto de operaciones que un sistema expone para que otros lo usen. |
+| APK | Formato de paquete de instalación de las apps Android. |
+| ASO (App Store Optimization) | Optimización de la ficha de una app en las tiendas para mejorar su visibilidad. |
+| Bounded Context | Límite dentro del cual un modelo de dominio y su lenguaje son consistentes. |
+| C4 Model | Modelo de Simon Brown para representar la arquitectura en cuatro niveles: contexto, contenedores, componentes y código. |
+| Conventional Commits | Convención para redactar mensajes de commit con un tipo y una descripción estandarizados. |
+| DDD (Domain-Driven Design) | Enfoque de diseño de software centrado en el dominio del negocio y su lenguaje. |
+| DTO (Data Transfer Object) | Objeto que transporta datos entre capas o sistemas, sin lógica de negocio. |
+| EF Core | Entity Framework Core, mapeador objeto-relacional de .NET. |
+| EventStorming | Técnica colaborativa para explorar un dominio a partir de sus eventos. |
+| FCM (Firebase Cloud Messaging) | Servicio de Google para enviar notificaciones push. |
+| Gherkin | Lenguaje estructurado (Given-When-Then) para escribir criterios de aceptación y pruebas BDD. |
+| GitFlow | Modelo de ramificación con ramas main, develop, feature, release y hotfix. |
+| i18n / a11y | Abreviaturas de internacionalización (*internationalization*) y accesibilidad (*accessibility*). |
+| IoT (Internet of Things) | Dispositivos físicos conectados que envían datos por la red. |
+| Jetpack Compose | Toolkit declarativo de Android para construir interfaces en Kotlin. |
+| Lean UX | Enfoque de diseño que formula hipótesis y las valida rápidamente con usuarios. |
+| Material Design 3 | Sistema de diseño de Google usado en la app. |
+| ML Kit | Conjunto de SDK de aprendizaje automático de Google que se ejecutan en el dispositivo. |
+| OpenAPI / Swagger | Especificación y herramienta para documentar APIs REST. |
+| Push notification | Mensaje que el servidor envía al dispositivo aunque la app esté cerrada. |
+| RESTful API | API que sigue el estilo arquitectónico REST sobre HTTP. |
+| Room | Biblioteca de persistencia local de Android sobre SQLite. |
+| Semantic Versioning | Esquema de versiones MAJOR.MINOR.PATCH. |
+| Spike | Historia de investigación con tiempo limitado para reducir incertidumbre técnica. |
+| Sprint | Iteración de duración fija en Scrum en la que se entrega un incremento. |
+| Story Points | Unidad relativa para estimar el esfuerzo de una historia. |
+| UX / UI | Experiencia de usuario e interfaz de usuario. |
+| Wireflow | Diagrama que combina wireframes con las interacciones que conectan las pantallas. |
+
+# Bibliografía
+
+Las referencias se organizan según las categorías del Anexo G del enunciado. Los cuatro artículos académicos requeridos, publicados en revistas Q1 o Q2 en 2024 o 2025, se identifican con (★).
+
+**Dominio de negocio**
+
+- (★) Abdullahi, U. I., Zhang, W., Cao, Y., & Irankunda, G. (2025). Integrating IoT technology for fire risk monitoring and assessment in residential building design. *Buildings, 15*(8), Artículo 1346. https://doi.org/10.3390/buildings15081346
+- Android Authority. (2025, 28 de marzo). *Google is retiring the Nest Protect*. https://androidauthority.com/nest-protect-retired-3539328
+- Andina. (2025, 7 de junio). *Más de 7 millones de hogares cocinan con GLP y 650,000 vehículos lo usan como combustible*. https://andina.pe/agencia/noticia-mas-7-millones-hogares-cocinan-glp-y-650000-vehiculos-usan-como-combustible-1032628.aspx
+- Gestión. (2024a, 18 de diciembre). *Bomberos atendieron 30 incendios al día este 2024: ¿cómo evitar siniestros en esta época del año?* https://gestion.pe/peru/bomberos-atendieron-30-incendios-al-dia-este-2024-como-evitar-siniestros-en-esta-epoca-del-ano-noticia/
+- Gestión. (2024b, 26 de diciembre). *INEI: 88.6% de hogares peruanos cocinan con gas*. https://gestion.pe/economia/inei-886-de-hogares-peruanos-cocinan-con-gas-enaho-noticia/
+- (★) Landi, E., Parri, L., Baldo, D., Parrino, S., Vatansever, T., Fort, A., Mugnaini, M., & Vignoli, V. (2025). Reliability and performance evaluation of IoT-based gas leakage detection systems for residential environments. *Electronics, 14*(19), Artículo 3798. https://doi.org/10.3390/electronics14193798
+- Perú Retail. (2025, 26 de mayo). *INEI: actividad de restaurantes en Perú aumentó 1.34% en marzo de 2025*. https://www.peru-retail.com/?p=372889
+
+**Métodos, técnicas y approaches de ingeniería de software**
+
+- Brown, S. (s. f.). *The C4 model for visualising software architecture*. https://c4model.com
+- Conventional Commits. (s. f.). *Conventional Commits 1.0.0*. https://www.conventionalcommits.org/en/v1.0.0/
+- Driessen, V. (2010, 5 de enero). *A successful Git branching model*. https://nvie.com/posts/a-successful-git-branching-model/
+- Evans, E. (2003). *Domain-driven design: Tackling complexity in the heart of software*. Addison-Wesley.
+- Gothelf, J., & Seiden, J. (2021). *Lean UX: Designing great products with agile teams* (3.ª ed.). O'Reilly Media.
+- (★) Mahmud, T., Che, M., Ngu, A., & Yang, G. (2025). Why Android app testing falls short: Empirical insights from open-source projects and a practitioner survey. *Empirical Software Engineering, 30*(6). https://doi.org/10.1007/s10664-025-10726-x
+- Moran, K. (2016, 17 de julio). *The four dimensions of tone of voice*. Nielsen Norman Group. https://www.nngroup.com/articles/tone-of-voice-dimensions/
+- Preston-Werner, T. (s. f.). *Semantic Versioning 2.0.0*. https://semver.org
+- (★) Rua, R., & Saraiva, J. (2024). A large-scale empirical study on mobile performance: Energy, run-time and memory. *Empirical Software Engineering, 29*(1), Artículo 31. https://doi.org/10.1007/s10664-023-10391-y
+- Schwaber, K., & Sutherland, J. (2020). *The Scrum guide*. https://scrumguides.org
+- Vernon, V. (2016). *Domain-driven design distilled*. Addison-Wesley.
+- W3C. (2018). *Web Content Accessibility Guidelines (WCAG) 2.1*. https://www.w3.org/TR/WCAG21/
+
+**Lenguajes, frameworks y herramientas**
+
+- Android Developers. (s. f.-a). *Core app quality guidelines*. https://developer.android.com/docs/quality-guidelines/core-app-quality
+- Android Developers. (s. f.-b). *Guide to app architecture*. https://developer.android.com/topic/architecture
+- Android Developers. (s. f.-c). *Jetpack Compose tutorial*. https://developer.android.com/jetpack/compose/tutorial
+- Bailey, T., & Biessek, A. (2026). *Flutter for beginners* (4.ª ed.). Packt Publishing.
+- Firebase. (s. f.-a). *Firebase App Distribution*. https://firebase.google.com/docs/app-distribution
+- Firebase. (s. f.-b). *Firebase Cloud Messaging*. https://firebase.google.com/docs/cloud-messaging
+- Forrester, A., Boudjnah, E., Dumbravan, A., & Tigcal, J. (2025). *How to build Android applications with Kotlin* (3.ª ed.). Packt Publishing.
+- Google. (s. f.). *Barcode scanning · ML Kit*. https://developers.google.com/ml-kit/vision/barcode-scanning
+- Künneth, T. (2023). *Android UI development with Jetpack Compose* (2.ª ed.). Packt Publishing.
+- Microsoft. (s. f.-a). *ASP.NET Core documentation*. https://learn.microsoft.com/aspnet/core
+- Microsoft. (s. f.-b). *C# coding conventions*. https://learn.microsoft.com/dotnet/csharp/fundamentals/coding-style/coding-conventions
+- Open-Meteo. (s. f.). *Weather forecast API*. https://open-meteo.com/en/docs
+- Structurizr. (s. f.). *Structurizr DSL*. https://docs.structurizr.com/dsl
+
+**Ética profesional**
+
+- ACM & IEEE Computer Society. (1999). *Software engineering code of ethics and professional practice*. https://www.acm.org/code-of-ethics/software-engineering-code
+- Colegio de Ingenieros del Perú. (2018). *Código de ética del CIP*. https://www.cip.org.pe/publicaciones/reglamentosCNCD2018/codigo_de_etica_del_cip.pdf
+
+# Anexos
+
+## Anexo A. Videos
+
+| Video | Entrega | Enlace |
+|:--|:--|:--|
+| Entrevistas de needfinding | AV1 | Enlaces individuales de OneDrive en la sección 2.2.2 |
+
+## Anexo B. Términos y condiciones de SmartGas
+
+Última actualización: 5 de octubre de 2026. Estos términos se muestran en el pie de página del landing page y deben aceptarse al crear una cuenta en la app.
+
+1. **Objeto del servicio.** SmartGas, de FireSecure, es un servicio de monitoreo que muestra lecturas de gas y temperatura de sensores compatibles y envía alertas al usuario. SmartGas es una herramienta de apoyo para la prevención; no reemplaza a los detectores certificados, a las inspecciones técnicas ni a los servicios de emergencia. Ante una emergencia, el usuario debe llamar a los Bomberos (116).
+2. **Cuenta del usuario.** El usuario es responsable de la veracidad de sus datos, de la confidencialidad de su contraseña y de mantener actualizado su contacto de emergencia.
+3. **Funcionamiento de las alertas.** La entrega de las alertas depende de la conexión a internet del sensor y del dispositivo, del estado de la batería del sensor y de que el usuario mantenga activas las notificaciones. FireSecure informará con transparencia cualquier interrupción del servicio.
+4. **Datos personales.** FireSecure recopila solo los datos necesarios para prestar el servicio (correo, nombre, teléfono, distrito, lecturas, incidentes y token del dispositivo), los trata conforme a la Ley N.º 29733, Ley de Protección de Datos Personales del Perú, no los vende a terceros y los comparte únicamente con los proveedores necesarios para operar (alojamiento en la nube y notificaciones push). El usuario puede solicitar el acceso, la rectificación o la eliminación de sus datos escribiendo a privacidad@firesecure.pe.
+5. **Cámara y permisos.** La cámara se usa solo para leer el código QR de los sensores; las imágenes se procesan en el dispositivo y no se almacenan ni se envían.
+6. **Planes y pagos.** Los precios de los planes se expresan en soles e incluyen impuestos. El usuario puede cambiar de plan o cancelar su suscripción en cualquier momento; la cancelación surte efecto al final del periodo pagado.
+7. **Responsabilidad profesional.** FireSecure desarrolla SmartGas siguiendo el *Software Engineering Code of Ethics and Professional Practice* de ACM/IEEE-CS y el Código de Ética del Colegio de Ingenieros del Perú: prioriza la seguridad y el bienestar del público, comunica las limitaciones del producto y no diseña la app para fomentar un uso compulsivo.
+8. **Modificaciones.** FireSecure notificará en la app cualquier cambio en estos términos con al menos 15 días de anticipación.
+
+## Anexo C. Fuentes de los diagramas
+
+Los diagramas de arquitectura y de diseño táctico se mantienen como código en la carpeta `diagrams/` del repositorio del informe:
+
+| Archivo | Contenido |
+|:--|:--|
+| `diagrams/workspace.dsl` | Modelo C4 completo en Structurizr DSL (contexto, contenedores, componentes y despliegue). |
+| `diagrams/c4-*.puml`, `diagrams/deployment.puml` | Diagramas C4 y de despliegue en C4-PlantUML. |
+| `diagrams/context-map.puml` | Context Map. |
+| `diagrams/tactical/class-*.puml` | Diagramas de clases del Domain Layer por bounded context. |
+| `diagrams/tactical/comp-*.puml` | Diagramas de componentes por bounded context. |
+| `diagrams/tactical/db-*.puml` | Diagramas de base de datos por bounded context y base de datos local Room. |
+
+
