@@ -644,19 +644,22 @@ Los cinco problemas se registraron como tareas en el Sprint Backlog 2.
 
 ## Video About-the-Team
 
-El video About-the-Team se presentará en su primera versión en el AV2 y en su versión final en el TB2. Incluirá la presentación de cada integrante ante cámara, escenas de las sesiones de trabajo del equipo (EventStorming, Sprint Planning y desarrollo de la app) con narración en voz en off, y el testimonio de cada integrante sobre las actividades realizadas y el desarrollo del Student Outcome.
+El video About-the-Team presenta al equipo de FireSecure y el proceso de trabajo seguido para construir SmartGas. Cada integrante cuenta ante cámara las actividades que realizó, los conocimientos nuevos que tuvo que adquirir y aplicar, y cómo contribuyeron al logro del Student Outcome.
+
+![Video About-the-Team](./assets/video-about-the-team.png)
 
 | Elemento | Detalle |
 |:--|:--|
 | Nomenclatura | `upc-pre-202620-1acc0238-4949-firesecure-about-the-team-av2.mp4` |
-| Duración estimada | 10 minutos (5 minutos de retrospectiva y 1 minuto por testimonio) |
+| Duración | 5 minutos |
 | Entrega | AV2 (primera versión) y TB2 (versión final) |
+| URL | [About-the-Team](https://drive.google.com/drive/folders/1x8SksBAPJA5PsVpUFmCmuII6IFTFwRbO?hl=es) |
 
 ## Video About-the-Product
 
 El video About-the-Product presenta el problema, la propuesta de valor de SmartGas, escenas de la app en uso y testimonios de usuarios de las entrevistas de validación. Está dirigido a los visitantes del landing page, donde se encuentra incrustado.
 
-![Video About-the-Product](./assets/video-about-the-product.png)
+![Video About-the-Product](./assets/video-about-the-product.jpeg)
 
 - **Duración:** 4:39
 - **URL YouTube:** [About-the-Product](https://www.youtube.com/watch?v=4hULzVNkIMQ)
