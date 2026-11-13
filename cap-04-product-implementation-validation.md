@@ -503,7 +503,35 @@ Todas las tareas se aplican a ambos segmentos (familias y restaurantes).
 
 ### 4.3.2. Registro de Entrevistas
 
-Las entrevistas de validación se registrarán en el Sprint 2 (AV2) con el formato de la sección 2.2.2: nombre, edad, distrito, captura del video, inicio, duración, enlace y resumen de las apreciaciones del entrevistado sobre cada tarea.
+Las entrevistas de validación se realizaron en el Sprint 2 (AV2) con el formato de la sección 2.2.2. Cada sesión se grabó en tres partes: la presentación del entrevistado y su contexto, una demostración guiada de la app (inicio de sesión, estado de la cocina, alerta crítica simulada, incidente, historial, registro por QR y ajustes) y las preguntas sobre su apreciación.
+
+##### Segmento objetivo #1 Familias y Propietarios de Viviendas
+
+#### Entrevista 1:
+
+![Entrevista validación 1](./assets/validacion-entrevista1.png)
+
+- **Nombres y apellidos:** Omar Rivera
+- **Edad:** 26
+- **Distrito:** La Victoria
+- **Inicio:** 0:00
+- **Duración:** 8:31
+- **URL:** [entrevista](https://drive.google.com/file/d/1w1PtoD81jJq55DU9XKlIVaMKMc96KQ5p/view?usp=sharing)
+- **Resumen:** Omar, de 26 años, trabaja como cocinero y usa gas a diario. Tras ver la demostración, destacó que la app avise al celular aunque no esté en la cocina y que el estado se entienda por colores. Indicó que, ante la alerta, sabría qué hacer gracias a los pasos que muestra la app, y calificó como fácil el registro de sensores por QR. Para confiar en las alertas pidió saber que el sensor sigue funcionando y tiene batería, y sugirió que la alerta también llegue a otra persona de confianza.
+
+##### Segmento objetivo #2 Administradores y Chefs de Restaurantes
+
+#### Entrevista 1:
+
+![Entrevista validación 2](./assets/validacion-entrevista2.png)
+
+- **Nombres y apellidos:** Kevin Torres
+- **Edad:** 34
+- **Distrito:** Surquillo
+- **Inicio:** 0:00
+- **Duración:** 10:56
+- **URL:** [entrevista](https://drive.google.com/file/d/1Dpluux3DtNrfDMyzvRR0W2mU27yRkGs0/view?usp=sharing)
+- **Resumen:** Kevin, de 34 años, administra una pollería en Surquillo, donde la cocina y el almacén de balones se revisan solo al abrir y al cerrar. Tras ver la demostración, valoró poder ver todas las zonas en una pantalla e identificar cuál tiene problemas, sobre todo el almacén. Señaló que sabría qué hacer ante la alerta, aunque pidió que llegue a todo el equipo de cocina. Calificó el registro por QR con 4 de 5, consideró útil el historial exportable como respaldo ante inspecciones y eligió el plan Profesional.
 
 ### 4.3.3. Evaluaciones según heurísticas
 
@@ -626,7 +654,12 @@ El video About-the-Team se presentará en su primera versión en el AV2 y en su 
 
 ## Video About-the-Product
 
-El video About-the-Product, de uno a dos minutos, presentará el problema, la propuesta de valor de SmartGas, escenas de la app en uso y al menos un testimonio de un usuario de las entrevistas de validación. Se publicará en el OneDrive del curso y en YouTube para incrustarlo en el landing page. Su primera versión se entregará en el AV2.
+El video About-the-Product presenta el problema, la propuesta de valor de SmartGas, escenas de la app en uso y testimonios de usuarios de las entrevistas de validación. Está dirigido a los visitantes del landing page, donde se encuentra incrustado.
+
+![Video About-the-Product](./assets/video-about-the-product.png)
+
+- **Duración:** 4:39
+- **URL YouTube:** [About-the-Product](https://www.youtube.com/watch?v=4hULzVNkIMQ)
 
 ## Video App Validation
 
@@ -725,6 +758,8 @@ Las referencias se organizan según las categorías del Anexo G del enunciado. L
 | Video | Entrega | Enlace |
 |:--|:--|:--|
 | Entrevistas de needfinding | AV1 | Enlaces individuales de OneDrive en la sección 2.2.2 |
+| Entrevistas de validación | AV2 | Enlaces individuales en la sección 4.3.2 |
+| About-the-Product | AV2 | [YouTube](https://www.youtube.com/watch?v=4hULzVNkIMQ) |
 
 ## Anexo B. Términos y condiciones de SmartGas
 
